@@ -1,14 +1,25 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('./Fonts/._Gilroy-ExtraBold.otf') format('opentype');
-  font-weight: normal;
+  src: url('./Fonts/Gilroy-ExtraBold.otf') format('opentype');
   font-style: normal;
 }
+@font-face {
+  font-family: 'Rubik';
+  src: url('./Fonts/Rubik-Regular.ttf') format('opentype');
+  font-style: normal;
+}
+
+
 
 /* Font1 "Gilroy ExtraBold" for titles */
 .font1 {
   font-family: 'Gilroy', sans-serif; 
+}
+ 
+/* Font2 "Rubik Regular" for simple text */
+.font2 {
+  font-family: 'Rubik', sans-serif; 
 }
 
 @tailwind base;
