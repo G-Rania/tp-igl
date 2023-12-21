@@ -1,8 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import image from "../assets/Frame8.svg"
 import logo from "../assets/logo.svg"
+import handleLogin from "../api/auth_api"
+
+
 
 export default function Login(){
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          console.log(username)
+          const response = await handleLogin(username, password);
+          if (response == true){
+
+          }else{
+            setErrorMessage(response)
+          }// After successful login, perform necessary actions
+        } catch (error) {}
+      };
   return(
         <>
     <div className="  fullPage h-screen w-screen flex flex-row justify-center items-center ">
@@ -41,12 +60,17 @@ export default function Login(){
             </div>
 
             <div className="imputUserName  h-[40%] w-full flex flex-col items-center justify-center ">
-                <input type="text" placeholder="Username or Email" className="  w-[80%] h-[20%] mb-[12px]  border-t-0 border-r-0 border-l-0 border-b-2 border-orange-500 focus:outline-none font-bold  text-[#771079]" />
-                <input type="password" placeholder="Enter Password" className="  w-[80%] h-[20%] border-t-0 border-r-0 border-l-0 border-b-2 border-orange-500 focus:outline-none font-bold text-[#771079] " />
+                <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username or Email" className="  w-[80%] h-[20%] mb-[12px]  border-t-0 border-r-0 border-l-0 border-b-2 border-orange-500 focus:outline-none font-bold  text-[#771079]" />
+                <input onChange={(e) => setPassword(e.target.value)} type="text" placeholder="Enter Password" className="  w-[80%] h-[20%] border-t-0 border-r-0 border-l-0 border-b-2 border-orange-500 focus:outline-none font-bold text-[#771079] " />
+                {errorMessage && (
+                    <div className="error-message">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
              </div>
 
             <div className=" thirdDiv h-[20%] w-[65%] flex items-center justify-between">
-                <button className="loginButton  pr-[48px] pl-[48px] p-[24px] pr-[32px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl  " > Login </button>
+                <button onClick={handleSubmit} className="loginButton  pr-[48px] pl-[48px] p-[24px] pr-[32px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl  " > Login </button>
                 <a href="" className="text-[#F87F0F] font-mada font-bold text-base ">Forgot Password?</a>
             </div>
 
