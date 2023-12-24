@@ -13,6 +13,9 @@ module.exports = {
         '120': '30rem', 
         '150': '37.5rem',
       },
+      screens: {
+        'custom-sm': {'min': '200px', 'max': '600px'},
+      }
     },
   },
   plugins: [],
