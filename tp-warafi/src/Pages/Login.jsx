@@ -46,7 +46,7 @@ export default function Login(){
              </div>
 
             <div className=" thirdDiv h-[20%] w-[65%] flex items-center justify-between">
-                <button className="loginButton  pr-[48px] pl-[48px] p-[24px] pr-[32px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl  " > Login </button>
+                <button className="loginButton  pl-[48px] p-[24px] pr-[32px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl  " > Login </button>
                 <a href="" className="text-[#F87F0F] font-mada font-bold text-base ">Forgot Password?</a>
             </div>
 
