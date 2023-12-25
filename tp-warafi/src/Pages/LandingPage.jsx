@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import Section1 from "../Components/LandingPage/Section1";
 import Section2 from "../Components/LandingPage/Section2";
 import Section3 from "../Components/LandingPage/Section3";
