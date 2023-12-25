@@ -1,11 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import image from "../assets/Frame8.svg";
 import logo from "../assets/logo.svg";
 import or from "../assets/or.svg";
 import userVector from "../assets/userVector.svg";
 import lockVector from "../assets/lockVector.svg";
+import eyeClosed from "../assets/eyeClosed.svg";
+import eyeOpened from "../assets/eyeOpened.svg";
+
+
 
 export default function Login() {
+
+  const [passwordVisible, setPasswordVisible ] = useState(false);
+
+  const handlePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  }
+
   return (
     <>
       <div className="fullPage h-screen w-screen flex flex-row justify-center items-center">
@@ -43,10 +55,11 @@ export default function Login() {
             </div>
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={lockVector} alt="Lock Vector" className="h-[20px] w-[20px] mr-[10px]" />
-              <input type="password" placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <input type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <img src={ passwordVisible ? eyeClosed : eyeOpened} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
             </div>
             <div className="hidden custom-sm:flex items-center justify-end h-[20%] w-full">
-              <a href="" className="text-[#F87F0F] font-mada font-bold text-[12px]">
+              <a href="idk yet" className="text-[#F87F0F] font-mada font-bold text-[12px]">
                 Forgot Password?
               </a>
             </div>
@@ -56,7 +69,7 @@ export default function Login() {
             <button className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
               LOGIN
             </button>
-            <a href="" className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">
+            <a href="idk yet " className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">
               Forgot Password?
             </a>
             <div className="h-[10%] w-full hidden custom-sm:flex">
