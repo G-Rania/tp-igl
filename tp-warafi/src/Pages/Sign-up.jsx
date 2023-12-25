@@ -42,7 +42,7 @@ export default function Signup(){
 
         <div className="secondRow h-full w-[67vw] bg-white flex flex-col justify-center items-center" >
 
-            <div className="  h-[40%] w-full flex items-center justify-center " >
+            <div className="  h-[60%] w-full flex items-center justify-center " >
                     <img src={logo} alt="" className=" w-40 h-40"/>
             </div>
 
