@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
-import eyeopened from "./assets/eyeOpened.svg"
-import eyeclosed from "./assets/eyeClosed.svg"
+import eyeopened from "../../assets/eyeOpened.svg"
+import eyeclosed from "../../assets/eyeClosed.svg"
 const Input = (props) => {
 
         const [isPassword, setPassword] = useState(true);

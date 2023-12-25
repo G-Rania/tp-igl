@@ -7,21 +7,21 @@ import {
   Route,
   
 } from "react-router-dom";
-import LandingPage from './Pages/LandingPage';
-import SignUpPage from './Pages/Sign-up'
-import Login from './Pages/Login'
+import LandingPage from './Pages/LandingPage.jsx';
+import Signup from './Pages/Sign-up.jsx'
+import Login from './Pages/Login.jsx'
 
 function App() {
   return (
     <BrowserRouter>
-  <   Routes>
-        <Route index path='/landingPage'  element={<LandingPage/>} >
+     <Routes>
+        <Route path='/'  element={<LandingPage/>} >
         </Route>
         
         <Route path='/login' element={<Login/>}>
         </Route>
 
-        <Route  path='/signup' element={<SignUpPage/>} >
+        <Route  path='/signup' element={<Signup/>} >
         </Route>
       </Routes>
     </BrowserRouter>
