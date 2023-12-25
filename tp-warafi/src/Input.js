@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
-import eye from "./assets/eye.svg"
+import eyeopened from "./assets/eyeOpened.svg"
+import eyeclosed from "./assets/eyeClosed.svg"
 const Input = (props) => {
 
         const [isPassword, setPassword] = useState(true);
@@ -29,7 +30,7 @@ const Input = (props) => {
        <div className="pl-8">
           <button onClick={togglePassword}>
             <img
-              src={eye}
+              src={isPassword ?eyeopened : eyeclosed}
               alt="Eye Icon"
               className="h-6 w-6 text-[#771079] mb-2 cursor-pointer"
             />
