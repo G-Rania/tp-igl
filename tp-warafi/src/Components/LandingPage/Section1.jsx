@@ -20,9 +20,9 @@ const Section1 = ()=> {
   }, [currentImage,images.length]);
 
     return (
-      <div className=' top-0 left-0 bg-white bg-cover bg-center bg-no-repeat flex justify-start w-screen h-screen'  style={{ 
+      <div className=' top-0 left-0 bg-white bg-center bg-no-repeat flex justify-start min-h-screen '  style={{ 
         backgroundImage: `url(${background})`,
-        height: '148.5vh',
+        minHeight: '148.5vh',
         margin: 0,
         padding: 0
         }}>
