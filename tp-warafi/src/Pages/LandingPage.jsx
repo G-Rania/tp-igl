@@ -3,6 +3,7 @@ import Section1 from "../Components/LandingPage/Section1";
 import Section2 from "../Components/LandingPage/Section2";
 import Section3 from "../Components/LandingPage/Section3";
 import Section4 from "../Components/LandingPage/Section4";
+import Footer from "../Components/Footer";
 
 
 const LandingPage = () => {
@@ -15,8 +16,8 @@ const LandingPage = () => {
             <Section3/>
             <div className='bg-none' style={{ padding: "52px" }}></div>
             <Section4/>
-            <div className='bg-none' style={{ padding: "80px" }}></div>
-
+            <div className='bg-none' style={{ padding: "52px" }}></div>
+            <Footer/>
         </div>
     )
 }

@@ -2,13 +2,13 @@
 import './App.css';
 import './index.css'
 import LandingPage from './Pages/LandingPage';
-import Login from './Pages/Login'
-import Signup from './Pages/Sign-up';
+
+//import Login from './Pages/Login'
 
 function App() {
   return (
-    <Signup/>
-    /*<LandingPage/> */   
+    /*<Login/>*/
+    <LandingPage/> 
   );
 }
 
