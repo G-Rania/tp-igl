@@ -30,7 +30,7 @@ const Input = (props) => {
        <div className="pl-8">
           <button onClick={togglePassword}>
             <img
-              src={isPassword ?eyeopened : eyeclosed}
+              src={isPassword ? eyeclosed : eyeopened}
               alt="Eye Icon"
               className="h-6 w-6 text-[#771079] mb-2 cursor-pointer"
             />

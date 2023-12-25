@@ -7,6 +7,7 @@ import userVector from "../assets/userVector.svg";
 import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
+import { Link } from "react-router-dom";
 
 
 
@@ -42,7 +43,9 @@ export default function Login() {
               <span className="relative z-10">LOGIN</span>
               <span className="absolute inset-0 top-0 z-0 bg-gradient-to-b from-gray-300 to-transparent h-4" />
             </button>
-            <button className="text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]">SIGNUP</button>
+            <button className="text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]"> 
+              <Link to='/signup' >SIGNUP</Link>            
+             </button>
           </div>
         </div>
 
@@ -59,7 +62,7 @@ export default function Login() {
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={lockVector} alt="Lock Vector" className="h-[20px] w-[20px] mr-[10px]" />
               <input type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
-              <img src={ passwordVisible ? eyeClosed : eyeOpened} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
+              <img src={ passwordVisible ? eyeOpened : eyeClosed} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
             </div>
             <div className="hidden custom-sm:flex items-center justify-end h-[20%] w-full">
               <a href="idk yet" className="text-[#F87F0F] font-mada font-bold text-[12px]">
@@ -79,7 +82,7 @@ export default function Login() {
               <img src={or} alt="Or" className="h-full w-full" />
             </div>
             <button className="signupButton hidden custom-sm:flex pr-[32px] pl-[32px] p-[18px] rounded-full bg-[#D416D8] text-[#771079] font-gilroy font-bold text-2xl">
-              SIGNUP
+            <Link to='/signup' >SIGNUP</Link>            
             </button>
           </div>
         </div>

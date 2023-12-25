@@ -42,7 +42,7 @@ export default function Signup(){
 
         <div className="secondRow h-full w-[67vw] bg-white flex flex-col justify-center items-center" >
 
-            <div className="  h-[40%] w-full flex items-center justify-center " >
+            <div className="  h-[60%] w-full flex items-center justify-center " >
                     <img src={logo} alt="" className=" w-40 h-40"/>
             </div>
 
@@ -56,7 +56,7 @@ export default function Signup(){
             </div>
 
             <div className=" thirdDiv w-[100%] md:w-[70%] h-[10%] w-[70%] flex items-center  justify-center md:justify-end ">
-                <button className="loginButton h-[10%] w-[50%] md:w-[30%] pr-[20px] pl-[15px] pt-[10px] pb-[40px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-xl  " > Signup </button>
+                <button className="signupButton h-[10%] w-[50%] md:w-[30%] pr-[20px] pl-[15px] pt-[10px] pb-[40px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-xl  " > Signup </button>
             </div>
 
                 
