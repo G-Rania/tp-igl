@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import signOut from "../api/sign_out_api";
-import getData from "../api/get_data_api";
+import signOut from "../api/users/sign_out_api";
+import getData from "../api/users/get_data_api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -10,11 +10,12 @@ export default function Home(){
     const navigate = useNavigate();
     const userSignOut = async (e) => {
         try{
-            signOut()
+            const signedOut = signOut()
+            if (signedOut){
+                navigate('/users/login')
+            }
         }catch(e){}
-        finally{
-            navigate('/users/login')
-        }
+        
     }
     const get_user_data = async (e) => {
         const authenticated = await getData();

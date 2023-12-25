@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import image from "../assets/Frame8.svg"
 import logo from "../assets/logo.svg"
-import handleLogin from "../api/auth_api"
-import getData from "../api/get_data_api";
+import handleLogin from "../api/users/login_api"
+import getData from "../api/users/get_data_api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -25,6 +25,7 @@ export default function Login(){
         } catch (error) {}
       };
       const get_user_data = async (e) => {
+        
         const authenticated = await getData();
         if(authenticated == true){
             navigate('/users/home')
