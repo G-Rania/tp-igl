@@ -7,6 +7,7 @@ import userVector from "../assets/userVector.svg";
 import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
+import { Link } from "react-router-dom";
 
 
 
@@ -42,7 +43,9 @@ export default function Login() {
               <span className="relative z-10">LOGIN</span>
               <span className="absolute inset-0 top-0 z-0 bg-gradient-to-b from-gray-300 to-transparent h-4" />
             </button>
-            <button className="text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]">SIGNUP</button>
+            <button className="text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]"> 
+              <Link to='/signup' >SIGNUP</Link>            
+             </button>
           </div>
         </div>
 
@@ -79,7 +82,7 @@ export default function Login() {
               <img src={or} alt="Or" className="h-full w-full" />
             </div>
             <button className="signupButton hidden custom-sm:flex pr-[32px] pl-[32px] p-[18px] rounded-full bg-[#D416D8] text-[#771079] font-gilroy font-bold text-2xl">
-              SIGNUP
+            <Link to='/signup' >SIGNUP</Link>            
             </button>
           </div>
         </div>
