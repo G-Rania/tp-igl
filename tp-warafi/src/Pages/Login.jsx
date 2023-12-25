@@ -59,7 +59,7 @@ export default function Login() {
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={lockVector} alt="Lock Vector" className="h-[20px] w-[20px] mr-[10px]" />
               <input type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
-              <img src={ passwordVisible ? eyeClosed : eyeOpened} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
+              <img src={ passwordVisible ? eyeOpened : eyeClosed} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
             </div>
             <div className="hidden custom-sm:flex items-center justify-end h-[20%] w-full">
               <a href="idk yet" className="text-[#F87F0F] font-mada font-bold text-[12px]">
