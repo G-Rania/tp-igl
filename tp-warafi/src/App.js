@@ -15,14 +15,9 @@ function App() {
   return (
     <BrowserRouter>
   <   Routes>
-        <Route index path='/landingPage'  element={<LandingPage/>} >
-        </Route>
-        
-        <Route path='/login' element={<Login/>}>
-        </Route>
-
-        <Route  path='/signup' element={<SignUpPage/>} >
-        </Route>
+        <Route index path='/landingPage'  element={<LandingPage/>} > </Route>  
+        <Route path='/login' element={<Login/>}> </Route>
+        <Route  path='/signup' element={<SignUpPage/>} ></Route>
       </Routes>
     </BrowserRouter>
     );

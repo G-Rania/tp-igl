@@ -4,7 +4,6 @@ import logo from "../assets/logo.svg"
 import email from"../assets/email.svg"
 import password from "../assets/password.svg"
 import user from "../assets/user.svg"
-import Input from "../Input"
 
 export default function Signup(){
   return(
