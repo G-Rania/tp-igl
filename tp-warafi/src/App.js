@@ -1,5 +1,6 @@
 
 import './App.css'
+//import Modview from './Pages/Modview';
 import './index.css'
 import {
   BrowserRouter ,
@@ -29,3 +30,6 @@ function App() {
 }
 
 export default App;
+
+
+
