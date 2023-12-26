@@ -1,7 +1,8 @@
 
 import './App.css'
+import Modview from './Pages/Modview';
 import './index.css'
-import {
+/*import {
   BrowserRouter ,
   Routes,
   Route,
@@ -9,11 +10,11 @@ import {
 } from "react-router-dom";
 import LandingPage from './Pages/LandingPage.jsx';
 import Signup from './Pages/Sign-up.jsx'
-import Login from './Pages/Login.jsx'
+import Login from './Pages/Login.jsx'*/
 
 function App() {
   return (
-    <BrowserRouter>
+    /*<BrowserRouter>
      <Routes>
         <Route path='/'  element={<LandingPage/>} >
         </Route>
@@ -24,8 +25,12 @@ function App() {
         <Route  path='/signup' element={<Signup/>} >
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter>*/
+   <Modview/> 
     );
 }
 
 export default App;
+
+
+
