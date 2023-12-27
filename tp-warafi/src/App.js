@@ -1,5 +1,6 @@
 
 import './App.css'
+import Adminbarre from './Components/Adminview/Adminbarre';
 import Modview from './Pages/Modview';
 import './index.css'
 /*import {
@@ -26,7 +27,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>*/
-   <Modview/> 
+    <Adminbarre/>
     );
 }
 
