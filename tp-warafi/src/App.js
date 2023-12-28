@@ -1,7 +1,10 @@
 
 import './App.css'
+import Adminbarre from './Components/Usersview/Adminbarre';
 import Modview from './Pages/Modview';
 import './index.css'
+import ManageMods from './Pages/ManageMods';
+import UploadFile from './Pages/UploadFile';
 /*import {
   BrowserRouter ,
   Routes,
@@ -26,7 +29,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>*/
-   <Modview/> 
+    <UploadFile/>
     );
 }
 
