@@ -7,7 +7,7 @@ ELASTIC_HOST = 'http://localhost:9200/'
 client = elasticsearch.Elasticsearch(hosts=[ELASTIC_HOST])
 
 
-def lookup(query, index='articles', fields=['title', 'text']):
+def lookup(query, index='articles', fields=['title', 'abstract', 'authors','institutions','keywords','full_text','references']):
     if not query:
         return 
     results = Search(
@@ -16,10 +16,17 @@ def lookup(query, index='articles', fields=['title', 'text']):
     q_results = []
 
     for hit in results:
+        
         data = {
             "title": hit.title,
-            "text": hit.text,
-            "url": hit.url,
+            "abstract" : hit.abstract,
+            "authors":hit.authors,
+            "institutions":hit.institutions,
+            "keywords":hit.keywords,
+            "full_text":hit.full_text,
+            "references":hit.references,
+            "pdf_url":hit.pdf_url,
+            "url" : f"articles/{hit.meta.id}"
         }
         q_results.append(data)
     return q_results
