@@ -1,6 +1,6 @@
 
 import './App.css'
-import Adminbarre from './Components/Usersview/Adminbarre';
+import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
 import Modview from './Pages/Modview';
 import './index.css'
 import ManageMods from './Pages/ManageMods';
@@ -17,13 +17,14 @@ import Login from './Pages/Login.jsx'
 
 function App() {
   return (
-    <BrowserRouter>
+    /*<BrowserRouter>
   <   Routes>
         <Route index path='/landingPage'  element={<LandingPage/>} > </Route>  
         <Route path='/login' element={<Login/>}> </Route>
         <Route  path='/signup' element={<SignUpPage/>} ></Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter>*/
+    <ManageMods></ManageMods>
     );
 }
 
