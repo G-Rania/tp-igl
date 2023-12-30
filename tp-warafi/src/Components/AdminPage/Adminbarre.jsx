@@ -7,7 +7,7 @@ import signout from "../../assets/Usersview/signout.svg"
 import triangle from "../../assets/Usersview/triangle.svg"
 
 
-const Adminbarre = () =>{
+const Adminbarre = ({onSignout }) =>{
     const [whichPage, setWhichPage ] = useState(0);
 
     const SignoutPage = () => {
@@ -46,7 +46,9 @@ const Adminbarre = () =>{
              <div className="flex flex-row  w-[100%]">
                  <div className="flex  flex-col lg:flex-row ml-4 mr-6 md:mr-16">
                       <img src={signout} alt="signout" className=" mb-1 lg:mr-6 h-6 lg:h-10"></img>
-                     <button onClick={SignoutPage} className="bg-none text-white font1 text-xs lg:text-base justify-start">Sign out</button>
+                     <button className="bg-none text-white font1 text-xs lg:text-base justify-start"
+                     onClick={ ()=>  {SignoutPage() ; onSignout()} } 
+                     >Sign out</button>
                  </div>
                  <img src={whichPage==2 ? triangle : null} alt="" className=""></img>
 

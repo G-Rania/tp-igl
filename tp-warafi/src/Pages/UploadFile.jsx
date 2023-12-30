@@ -1,5 +1,5 @@
 import React from "react";
-import Adminbarre from "../Components/Usersview/Adminbarre";
+import Adminbarre from "../Components/AdminPage/Adminbarre";
 import cloud from "../assets/Usersview/cloud.svg"
 
 const UploadFile = (props) => {
