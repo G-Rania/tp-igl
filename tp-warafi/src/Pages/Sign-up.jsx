@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import image from "../assets/Frame8.svg"
 import logo from "../assets/logo.svg"
 import email from"../assets/email.svg"
 import password from "../assets/password.svg"
 import user from "../assets/user.svg"
-import Input from "../Components/Signup/Input"
+import Input from "../Components/Signup/Input";
 
 export default function Signup(){
   return(
@@ -30,7 +31,9 @@ export default function Signup(){
             <div className=" signInUpDiv w-full h-1/2 flex flex-col justify-center items-end ">
                         
                             
-                        <button className="  text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]" >LOGIN</button>
+                        <button className="  text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]" >
+                          <Link to='/login'>LOGIN</Link>
+                        </button>
                         
                         <button className="relative bg-white text-[#771079] font-gilroy font-bold text-4xl rounded-l-full p-[24px] mt-[24px] overflow-hidden">
                             <span className="relative z-10">SIGNUP</span>

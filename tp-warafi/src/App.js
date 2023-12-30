@@ -1,15 +1,19 @@
 
 import './App.css'
+import Adminbarre from './Components/Usersview/Adminbarre';
+import Modview from './Pages/Modview';
 import './index.css'
+import ManageMods from './Pages/ManageMods';
+import UploadFile from './Pages/UploadFile';
 import {
   BrowserRouter ,
   Routes,
   Route,
   
 } from "react-router-dom";
-import LandingPage from './Pages/LandingPage';
-import SignUpPage from './Pages/Sign-up'
-import Login from './Pages/Login'
+import LandingPage from './Pages/LandingPage.jsx';
+import Signup from './Pages/Sign-up.jsx'
+import Login from './Pages/Login.jsx'
 
 function App() {
   return (
@@ -24,3 +28,6 @@ function App() {
 }
 
 export default App;
+
+
+
