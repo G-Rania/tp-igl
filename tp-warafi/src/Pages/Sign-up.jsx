@@ -50,7 +50,7 @@ export default function Signup(){
             </div>
 
             <div className="imputUserName  h-[40%] w-full flex flex-col items-center justify-center ">
-               <Input path={email} text="Email" type="text" show={false}/>
+                 <Input path={email} text="Email" type="text" show={false}/>
                  <Input path={user} text="Username"type="text"show={false}/>
                  <Input path={password} text="Password"  show={true}/>
 
