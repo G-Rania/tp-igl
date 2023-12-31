@@ -1,5 +1,7 @@
 
-import './App.css';
+import './App.css'
+import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
+import Modview from './Pages/Modview';
 import './index.css'
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
@@ -19,3 +21,6 @@ function App() {
 }
 
 export default App;
+
+
+
