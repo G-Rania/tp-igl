@@ -5,7 +5,7 @@ import background from "../assets/background.svg";
 import logo from "../assets/white_logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Article from "../Components/Userview/Article";
+import Article from "../Components/Userview/Article_user";
 import User from "../models/user"
 
 
