@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import image from "../assets/Frame8.svg"
 import logo from "../assets/logo.svg"
-import handleLogin from "../api/users/login_api"
-import getData from "../api/users/get_data_api";
+import {handleLogin, getData} from "../api/users/auth_api"
 import { useNavigate } from 'react-router-dom';
 
 
