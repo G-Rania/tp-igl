@@ -5,6 +5,9 @@ module.exports = {
     ],
   theme: {
     extend: {
+      colors: {
+        'grey':'#DDBED4',
+      },
       width: {
         '90': '23rem',
         '120': '30rem', 

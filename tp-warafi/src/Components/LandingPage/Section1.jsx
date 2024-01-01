@@ -36,7 +36,7 @@ const Section1 = ()=> {
              Welcome to the <span className='text-[#F87F0F]'>Scientific</span> Frontier <br/>
             </h1>
             <button className='bg-[#F87F0F] mt-16 ml-10 text-white text-xl font1 rounded-full w-40 h-11 hover:shadow-xl'>
-              <Link to='/signup'>Start now</Link>
+              <Link to='/users/signup'>Start now</Link>
             </button>
           </div>
           <div className='flex flex-col '>
