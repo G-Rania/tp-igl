@@ -4,7 +4,7 @@ import EditModDiv from "../Components/AdminPage/EditModerator";
 import RemoveModDiv from "../Components/AdminPage/RemoveMod";
 import SignoutDiv from "../Components/AdminPage/Signout";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
-import ModInfo from "../Components/Usersview/Modinfo";
+import ModInfo from "../Components/AdminPage/Modinfo";
 
 
 
@@ -69,8 +69,6 @@ const ManageMods = (props) => {
                   <div className="font1 ml-20">Password</div>
               </div>
               <div className="w-[100%]  flex flex-col space-y-4 mt-5 ml-20">
-                 <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
-                 <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
 

@@ -5,10 +5,10 @@ export default function EditModerator ({ isOpen, onClose }) {
  return (
      <div className={` absolute w-full h-full flex items-center justify-center ${isOpen ? 'flex' : 'hidden'}`}>
         <div className="absolute w-full h-full backdrop-blur-sm z-10" onClick={onClose}></div>
-        <div className={`editDiv p-[40px] absolute z-20 flex flex-col items-center justify-around h-[60%] w-[50%] border-[5px] border-solid border-[#771079] bg-white rounded-[20px] font-gilory text-[18px] font-light transform transition-transform ease-in-out ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className={`editDiv p-[40px] absolute z-20 flex flex-col items-center justify-around h-[380px] w-[380px] custom-sm:w-[80%] costum-sm:h-[50%] border-[5px] border-solid border-[#771079] bg-white rounded-[20px] font-gilory text-[18px] font-light transform transition-transform ease-in-out ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}>
            
             <div className=' h-[20%] w-full flex items-center justify-start '>
-                <h1 className=' font-bold text-[30px] '>Edit Moderator</h1>
+                <h1 className=' font-bold text-[30px] custom-sm:text-[25px] '>Edit Moderator</h1>
             </div>
             
             <Form></Form>
