@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import image from "../assets/Frame8.svg";
 import logo from "../assets/logo.svg";
 import or from "../assets/or.svg";
@@ -9,13 +9,39 @@ import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
 import { Link } from "react-router-dom";
+import {handleLogin, getData} from "../api/users/auth_api";
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 export default function Login() {
 
-
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await handleLogin(username, password);
+          if (response == true){
+            navigate('/users/home')
+          }else{
+            setErrorMessage(response)
+          }// After successful login, perform necessary actions
+        } catch (error) {}
+      };
+      const get_user_data = async (e) => {
+        
+        const authenticated = await getData();
+        if(authenticated == true){
+            navigate('/users/home')
+        }
+      }
+      useEffect(() => {
+        get_user_data()
+    }, []); 
   const [passwordVisible, setPasswordVisible ] = useState(false);
 
 
@@ -48,7 +74,7 @@ export default function Login() {
               <span className="absolute inset-0 top-0 z-0 bg-gradient-to-b from-gray-300 to-transparent h-4" />
             </button>
             <button className="text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]"> 
-              <Link to='/signup' >SIGNUP</Link>            
+              <Link to='/users/signup' >SIGNUP</Link>            
              </button>
           </div>
         </div>
@@ -61,22 +87,27 @@ export default function Login() {
           <div className="inputUserName h-[40%] w-full flex flex-col items-center justify-center">
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={userVector} alt="User Vector" className="h-[20px] w-[20px] mr-[10px]" />
-              <input type="text" placeholder="Username or Email" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username or Email" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
             </div>
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={lockVector} alt="Lock Vector" className="h-[20px] w-[20px] mr-[10px]" />
-              <input type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <input onChange={(e) => setPassword(e.target.value)} type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
               <img src={ passwordVisible ? eyeOpened : eyeClosed} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
             </div>
+            {errorMessage && (
+                    <div className="error-message">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
             <div className="hidden custom-sm:flex items-center justify-end h-[20%] w-full">
               <a href="idk yet" className="text-[#F87F0F] font-mada font-bold text-[12px]">
-                Forgot Password?
+                Forgot Password ?
               </a>
             </div>
           </div>
 
           <div className="thirdDiv h-[30%] w-[65%] mb-[20px] flex custom-sm:flex-col items-center justify-around">
-            <button className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
+            <button onClick={handleSubmit} className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
               LOGIN
             </button>
             <a href="idk yet " className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">

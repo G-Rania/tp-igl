@@ -1,11 +1,21 @@
-import React from "react";
+import React ,{useState}from "react";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import cloud from "../assets/Usersview/cloud.svg"
+import SignoutDiv from "../Components/AdminPage/Signout";
+
 
 const UploadFile = (props) => {
+    const [isOpen,setIsSignoutOpen]= useState(false); 
+    const onClose = ()=>{
+      setIsSignoutOpen(false);
+    }
+    const handleSignout = ()=>{
+      setIsSignoutOpen(true);
+    }
     return(
         <div className="flex flex-row justify-start">
-            <Adminbarre/>
+             <Adminbarre onSignout={handleSignout} which={0} />
+
 
             <div className="w-[78vw] flex justify-center items-center">
               <div className="flex flex-col items-center w-[85%] h-[80%] border-dashed border-2 border-orange-500 rounded-lg p-4">
@@ -17,6 +27,8 @@ const UploadFile = (props) => {
                       </button>
 
               </div>
+              <SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>
+
             </div>
 
              
