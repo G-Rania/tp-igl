@@ -49,7 +49,7 @@ const ManageMods = (props) => {
 
     return(
         <div className="flex flex-row justify-start">
-            <Adminbarre onSignout={handleSignout} />
+            <Adminbarre onSignout={handleSignout} which={1}  />
 
             <div className="w-[78vw]">
               <div className="flex flex-row justify-between w-[89%] mt-12 mb-6">
