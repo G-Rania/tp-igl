@@ -14,17 +14,18 @@ import {
 import LandingPage from './Pages/LandingPage.jsx';
 import Signup from './Pages/Sign-up.jsx'
 import Login from './Pages/Login.jsx'
+import Signout from './Components/AdminPage/Signout';
 
 function App() {
   return (
-    /*<BrowserRouter>
-  <   Routes>
-        <Route index path='/landingPage'  element={<LandingPage/>} > </Route>  
-        <Route path='/login' element={<Login/>}> </Route>
-        <Route  path='/signup' element={<SignUpPage/>} ></Route>
-      </Routes>
-    </BrowserRouter>*/
-    <ManageMods></ManageMods>
+    <BrowserRouter>
+    <Routes>
+  <Route  path="/upload" element={<UploadFile />} />
+  <Route  path="/managemods" element={<ManageMods />} />
+</Routes>
+
+  
+    </BrowserRouter>
     );
 }
 
