@@ -8,20 +8,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Article from "../Components/Userview/Article_user";
 import User from "../models/user";
 import SignoutDiv from "../Components/AdminPage/Signout";
+import filter from "../assets/filter.svg";
+import Filter from "../Components/Userview/Filter";
 
 
-const Dialog = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-  
-    return (
-      <div className="dialog-overlay">
-        <div className="dialog-content">
-          <p>This is a dialog content</p>
-          <button onClick={onClose}>Close</button>
-        </div>
-      </div>
-    );
-  };
+
 
 export default function Home(){
     const [isOpen,setIsSignoutOpen]= useState(false); 
@@ -31,6 +22,15 @@ export default function Home(){
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
     }
+
+    const [isFilter, setFilter] = useState(false);
+    const closeFilter = ()=>{
+        setFilter(false)
+    }
+    const openFilter = () => {
+        setFilter(true)
+    }
+
     const navigate = useNavigate();
     const goToLandingPage = () => {
         navigate('/'); // Navigating to the specified route '/'
@@ -81,6 +81,7 @@ export default function Home(){
                        
                     </div>
                 </div>
+                <div className="flex flex-row space-x-4 items-center">
                     <div className=" pr-3 flex flex-row items-center outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey">
                     
                     <input
@@ -92,12 +93,24 @@ export default function Home(){
                     <FontAwesomeIcon icon={faSearch} className=" text-white text-xl bg-orange-500 p-2 rounded-full" />
                     </button>
                     </div>
+                    <button onClick={openFilter} className="bg-orange-500 rounded-xl h-[80%] px-3 text-white text-lg font1">
+                        <div className="flex flex-row space-x-2">
+                            <img src={filter}></img>
+                            <p>Filter</p>
+                        </div>
+                    </button>
+                </div>    
                
                 </div>
             </div>
             <Article />
+            <Article />
+            <Article />
             
             <SignoutDiv  isOpen={isOpen} onClose={onClose} signOut={userSignOut}></SignoutDiv>
+            {isFilter && (
+                    <Filter close={closeFilter}></Filter>
+                )}
             
             
         </div>

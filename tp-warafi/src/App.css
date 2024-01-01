@@ -48,3 +48,12 @@
   z-index: 9999; /* Ensure it's above other content */
   /* Other styles for the overlay */
 }
+
+.dialog-filter {
+  position: absolute;
+  top: 70%;
+  transform: translate(-50%, -50%);/* semi-transparent background */
+  z-index: 9999; /* Ensure it's above other content */
+  /* Other styles for the overlay */
+}
+
