@@ -5,7 +5,7 @@ import approvedarticle from '../../assets/Usersview/approved.svg'
 import nonapprovedarticle from '../../assets/Usersview/nonapproved.svg'
 
 
-const Article = () => {
+const Article = ({article}) => {
 
     const [approved, setApproved] = useState(false);
     const handleApproval = () =>{
@@ -13,13 +13,13 @@ const Article = () => {
     }
 
     return(
-        <div className="bg-[#E9E9E9] rounded-3xl mr-80 ml-3 w-90 mt-16 sm:mr-20 h-72 sm:w-screen shadow-xl flex flex-row">
+        <div className="bg-[#E9E9E9] rounded-3xl mr-80 ml-16  mt-16 sm:mr-20 h-72  shadow-xl flex flex-row">
             <div className="bg-none"> 
-            <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 sm:mr-32 mt-3">The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage </h1>
-            <p className="text-[#333333] font2 text-xs lg:text-sm ml-7 mt-7">Jian-bo CHANG, Ren-zhi WANG, Ming FENG <br/> <br/>
-            <span className="text-[#F87F0F]">September 2023</span> <br/> <br/>
+            <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 sm:mr-32 mt-3">{article.title}</h1>
+            <p className="text-[#333333] font2 text-xs lg:text-sm ml-7 mt-7">{article.authors} <br/> <br/>
+            <span className="text-[#F87F0F]">{article.date}</span> <br/> <br/>
             <span className="font1">Keywords: </span> <br/>
-            intracranial hemorrhages, artificial intelligence, review
+              {article.keywords}
             </p>
             </div>
              <div className="flex justify-start flex-col h-28 lg:flex-row lg:justify-around w-64 sm:w-120 ml-auto mt-5 sm:mt-auto sm:mr-14 md:mr-24 md:mb-7 lg:mb-0 ">

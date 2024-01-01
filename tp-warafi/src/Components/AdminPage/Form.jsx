@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function () {
+export default function Form () {
   return (
     <form className='h-[60%] w-full flex flex-col items-center justify-around '>
         

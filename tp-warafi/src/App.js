@@ -1,8 +1,8 @@
 
 import './App.css'
-import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
+//import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
 import Modview from './Pages/Modview';
-import './index.css'
+/*import './index.css'
 import ManageMods from './Pages/ManageMods';
 import UploadFile from './Pages/UploadFile';
 import {
@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 import LandingPage from './Pages/LandingPage.jsx';
 import Signup from './Pages/Sign-up.jsx'
-import Login from './Pages/Login.jsx';
+import Login from './Pages/Login.jsx';*/
 
 function App() {
   return (
@@ -29,7 +29,9 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>*/
-   <Modview/> 
+   //<UploadFile/>
+   //<ManageMods/>
+   <Modview/>
     );
 }
 

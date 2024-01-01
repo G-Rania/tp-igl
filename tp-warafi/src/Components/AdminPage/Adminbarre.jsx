@@ -31,7 +31,7 @@ const Adminbarre = ({onSignout }) =>{
                   <img src={upload} alt="upload articles" className=" mb-1  lg:mr-6 h-6 lg:h-10"></img>
                   <button onClick={UploadPage}className="bg-none text-white font1 text-xs lg:text-base justify-start "> Upload Articles</button>
                </div>
-               <img src={whichPage==0 ? triangle : null} alt="" className=""></img>
+               <img src={whichPage===0 ? triangle : null} alt="" className=""></img>
 
             </div>
             <div className="flex flex-row mb-14 justify-between w-[100%] ">
@@ -39,7 +39,7 @@ const Adminbarre = ({onSignout }) =>{
                    <img src={manage} alt="manage mods" className=" mb-1 lg:mr-6 h-6 lg:h-10"></img>
                   <button onClick={ManagePage}className="bg-none text-white font1 text-xs lg:text-base justify-start ">Manage Mods</button>
              </div>
-             <img src={whichPage==1 ? triangle : null} alt="" className=""></img>
+             <img src={whichPage===1 ? triangle : null} alt="" className=""></img>
 
  
              </div>
@@ -50,7 +50,7 @@ const Adminbarre = ({onSignout }) =>{
                      onClick={ ()=>  {SignoutPage() ; onSignout()} } 
                      >Sign out</button>
                  </div>
-                 <img src={whichPage==2 ? triangle : null} alt="" className=""></img>
+                 <img src={whichPage===2 ? triangle : null} alt="" className=""></img>
 
               </div> 
            </div> 
