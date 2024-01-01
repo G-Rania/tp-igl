@@ -34,7 +34,7 @@ const Adminbarre = ({onSignout ,which}) =>{
             <div className="flex flex-row mb-14 justify-between w-[100%]">
               <div className="flex flex-col lg:flex-row ml-4 mr-4 md:mr-6 ">
                   <img src={upload} alt="upload articles" className=" mb-1  lg:mr-6 h-6 lg:h-10"></img>
-                  <Link to='/upload'>
+                  <Link to='/admin/upload'>
                      <button onClick={UploadPage}className="bg-none text-white font1 text-xs lg:text-base justify-start "> Upload Articles</button>
                   </Link>
                </div>
@@ -44,7 +44,7 @@ const Adminbarre = ({onSignout ,which}) =>{
             <div className="flex flex-row mb-14 justify-between w-[100%] ">
              <div className="flex  flex-col lg:flex-row ml-4 mr-4 md:mr-6 ">
                    <img src={manage} alt="manage mods" className=" mb-1 lg:mr-6 h-6 lg:h-10"></img>
-                  <Link to="/managemods" > 
+                  <Link to="/admin/managemods" > 
                         <button onClick={ManagePage}className="bg-none text-white font1 text-xs lg:text-base justify-start ">Manage Mods</button>
                   </Link>
              </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import {signOut, getData} from "../api/users/auth_api";
 import { useNavigate } from 'react-router-dom';
 import background from "../assets/background.svg";
@@ -6,12 +6,31 @@ import logo from "../assets/white_logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Article from "../Components/Userview/Article_user";
-import User from "../models/user"
+import User from "../models/user";
+import SignoutDiv from "../Components/AdminPage/Signout";
 
 
-
+const Dialog = ({ isOpen, onClose }) => {
+    if (!isOpen) return null;
+  
+    return (
+      <div className="dialog-overlay">
+        <div className="dialog-content">
+          <p>This is a dialog content</p>
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>
+    );
+  };
 
 export default function Home(){
+    const [isOpen,setIsSignoutOpen]= useState(false); 
+    const onClose = ()=>{
+      setIsSignoutOpen(false);
+    }
+    const handleSignout = ()=>{
+      setIsSignoutOpen(true);
+    }
     const navigate = useNavigate();
     const goToLandingPage = () => {
         navigate('/'); // Navigating to the specified route '/'
@@ -58,7 +77,7 @@ export default function Home(){
                             </div>
                         </div>
                     
-                            <button onClick={userSignOut} className='  text-white bg-orange-500 text-md lg:text-lg rounded-lg font1 px-4   md:w-auto whitespace-nowrap'>Sign out</button>
+                            <button onClick={handleSignout} className='  text-white bg-orange-500 text-md lg:text-lg rounded-lg font1 px-4   md:w-auto whitespace-nowrap'>Sign out</button>
                        
                     </div>
                 </div>
@@ -77,6 +96,10 @@ export default function Home(){
                 </div>
             </div>
             <Article />
+            
+            <SignoutDiv  isOpen={isOpen} onClose={onClose} signOut={userSignOut}></SignoutDiv>
+            
+            
         </div>
         
     );
