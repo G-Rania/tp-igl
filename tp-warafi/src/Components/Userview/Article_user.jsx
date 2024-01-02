@@ -3,13 +3,24 @@ import pdf from "../../assets/Usersview/pdf.svg";
 import fav from "../../assets/Usersview/fav.svg";
 import notfav from "../../assets/Usersview/notfav.svg";
 import details from "../../assets/Usersview/showdetails.svg"
+import {addFavorite, removeFavorite} from "../../api/users/favorites_api"
 
 
-const Article = ({article}) => {
+
+
+
+const Article = () => {
 
     const [favorite, setApproved] = useState(false);
 
-    const handleFavorite = () =>{
+    const handleFavorite = async () =>{
+        
+        if(!favorite){
+        const response = addFavorite();
+        }else{
+         const response = removeFavorite();   
+        }
+
         setApproved(!favorite);
     }
 
@@ -18,6 +29,7 @@ const Article = ({article}) => {
     return(
         <div className="bg-[#E9E9E9] rounded-3xl mx-10 mt-16 h-72 shadow-xl flex flex-row">
             <div className="bg-none"> 
+
             <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 mt-3">{article.title}</h1>
             <p className="text-[#333333] font2 text-xs lg:text-sm ml-7 mt-7">{article.authors} <br/> <br/>
             <span className="text-[#F87F0F]">{article.date}</span> <br/> <br/>
@@ -34,6 +46,7 @@ const Article = ({article}) => {
                 </a>
                 <button>
                 <img src={favorite? fav : notfav} alt="state article" onClick={handleFavorite} className="w-6 ml-16 lg:w-8 lg:m-4"></img>
+
                 </button>
              </div>
         </div>
