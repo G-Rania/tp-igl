@@ -9,7 +9,7 @@ import {addFavorite, removeFavorite} from "../../api/users/favorites_api"
 
 
 
-const Article = () => {
+const Article = ({article}) => {
 
     const [favorite, setApproved] = useState(false);
 

@@ -2,7 +2,7 @@
 import './App.css'
 
 
-import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
+//import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
 import Modview from './Pages/Modview';
 import './index.css'
 import LandingPage from './Pages/LandingPage';
@@ -10,9 +10,9 @@ import Login from './Pages/Login';
 import Home from './Pages/HomePage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './Pages/Sign-up.jsx';
-import ManageMods from './Pages/ManageMods.jsx';
+/*import ManageMods from './Pages/ManageMods.jsx';
 import UploadFile from './Pages/UploadFile.jsx';
-import AddModerator from './Components/AdminPage/AddModerator.jsx';
+import AddModerator from './Components/AdminPage/AddModerator.jsx';*/
 
 function App() {
   return (
@@ -30,6 +30,3 @@ function App() {
 }
 
 export default App;
-
-
-

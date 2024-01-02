@@ -1,5 +1,6 @@
 import React from "react";
 import Article from '../Components/Userview/Article_user' 
+import Footer from "../Components/Footer";
 
 
 
@@ -21,6 +22,8 @@ const FavoritesPage = () =>{
             <Article article={article}/>
             <Article article={article}/>
             <Article article={article}/>
+            <div className="h-16"></div>
+            <Footer/>
         </div>
     )
 

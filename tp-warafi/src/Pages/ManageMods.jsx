@@ -4,7 +4,7 @@ import EditModDiv from "../Components/AdminPage/EditModerator";
 import RemoveModDiv from "../Components/AdminPage/RemoveMod";
 import SignoutDiv from "../Components/AdminPage/Signout";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
-import ModInfo from "../Components/Usersview/Modinfo";
+import ModInfo from "../Components/Modview/Modinfo";
 
 
 
