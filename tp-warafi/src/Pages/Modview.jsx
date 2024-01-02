@@ -1,6 +1,6 @@
 import React,{useState} from "react";
-import Modbarre from "../Components/Usersview/Modbarre";
-import Article from "../Components/Usersview/Article";
+import Modbarre from "../Components/Modview/Modbarre";
+import Article from "../Components/Modview/Article";
 import Signout from "../Components/AdminPage/Signout";
 
 
@@ -35,17 +35,6 @@ const Modview = () => {
         <Signout isOpen={isOpen} onClose={onClose} ></Signout>
        </div>
         
-        /*<div className="flex flex-row justify-start">
-          <Modbarre onSignout={handleSignout} ></Modbarre>
-            <div className=" flex flex-col">
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
-            </div>
-            <Signout isOpen={isOpen} onClose={onClose} ></Signout>
-        </div>*/
     )
 }
 export default Modview
