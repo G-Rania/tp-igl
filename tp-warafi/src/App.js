@@ -18,7 +18,7 @@ import Signout from './Components/AdminPage/Signout';
 
 function App() {
   return (
-    <BrowserRouter>
+   <BrowserRouter>
     <Routes>
   <Route  path="/upload" element={<UploadFile />} />
   <Route  path="/managemods" element={<ManageMods />} />

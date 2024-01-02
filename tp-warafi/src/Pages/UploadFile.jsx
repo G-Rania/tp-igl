@@ -11,27 +11,43 @@ const UploadFile = (props) => {
     }
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
+    } 
+
+    const [isUpload,setUpload]= useState(false); 
+    const Upload = ()=>{
+      setUpload(true);
     }
     return(
         <div className="flex flex-row justify-start">
              <Adminbarre onSignout={handleSignout} which={0} />
 
 
-            <div className="w-[78vw] flex justify-center items-center">
-              <div className="flex flex-col items-center w-[85%] h-[80%] border-dashed border-2 border-orange-500 rounded-lg p-4">
-                      <img src={cloud} alt="" className="w-[26%] h-[30%] mt-5"/> 
-                      <h1 className="text-black font1 text-2xl mt-7 mb-7 text-center">Drag and Drop your files here </h1>
-                      <p className="text-black font1 text-2xl  mb-7 text-center">or </p>
-                      <button class="bg-white  transition duration-300 ease-in-out hover:bg-orange-500 hover:text-white text-orange-500 border-2 border-solid border-opacity-75 border-orange-500 font1 py-4 px-12 rounded">
-                          Browse Files
-                      </button>
 
-              </div>
-              <SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>
+            <div className="w-[78vw] flex flex-col justify-center items-center">
+            <h1 className=" absolute top-20 font1 text-4xl text-blac text-center"> Upload File</h1>
+
+                <div className="relative mt-20 w-[80%] ">
+                  <div className={isUpload?"absolute -mt-3 mr-2 pr-2 pl-1 top-0 left-2 bg-white pb-1 px-1  text-green-500 font1" :"absolute -mt-3 mr-2 pr-2 pl-1 top-0 left-2 bg-white pb-1 px-1  text-orange-500 font1"}>Enter the Url</div>
+                
+                  <input
+                    type="text"
+                    className={isUpload ? "w-full px-4 py-4 border-2 border-opacity-100 border-green-500 rounded-md" : "w-full px-4 py-4 border-2 border-opacity-100 border-orange-500 rounded-md"}
+                  />
+
+                 
+                 {isUpload ? ( <p className="font2 text-[#5E5E5E] text-sm text-center mt-4">Upload successful !</p>) 
+                  : ( <p className="font2 text-[#5E5E5E] text-sm text-center mt-4">Please make sure the URL is valid, and the file is accessible.</p> )}
+                 
+               </div>
+
+               <button  onClick={Upload} className=" absolute bottom-16 right-52 m-2 transform translate-x-1/2 bg-orange-500 text-white   border-2 border-solid border-opacity-75 border-orange-500 font1 py-2 px-6 rounded">
+                          Upload
+             </button>
 
             </div>
 
-             
+            {/*<SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>*/}
+
         </div>
     )
 }
