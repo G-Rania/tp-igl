@@ -23,6 +23,7 @@ const Input = (props) => {
        (
         <div className="w-[100%] flex items-center">
         <input
+        onChange={props.onChange}
         type={isPassword ? ("password"):"text"}
         placeholder={props.text}
         className="mb-3 w-full h-full pl-2 border-t-0 border-r-0 border-l-0 focus:outline-none font-bold text-[#771079]"
@@ -38,6 +39,7 @@ const Input = (props) => {
        </div> 
        </div>) : 
         <input
+        onChange={props.onChange}
         type={props.type}
         placeholder={props.text}
         className="mb-3 w-full h-full pl-2 border-t-0 border-r-0 border-l-0 focus:outline-none font-bold text-[#771079]"
