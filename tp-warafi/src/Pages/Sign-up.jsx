@@ -6,8 +6,36 @@ import email from"../assets/email.svg"
 import password from "../assets/password.svg"
 import user from "../assets/user.svg"
 import Input from "../Components/Signup/Input";
+import {handleSignup, getData} from "../api/users/auth_api";
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup(){
+    const [username, setUsername] = useState('');
+    const [userPassword, setPassword] = useState('');
+    const [userEmail, setEmail] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+          const response = await handleSignup(userEmail, username, userPassword);
+          if (response == true){
+            navigate('/users/home')
+          }else{
+            setErrorMessage(response)
+          }// After successful login, perform necessary actions
+        } catch (error) {}
+      };
+    const get_user_data = async (e) => {
+        const authenticated = await getData();
+        if(authenticated == true){
+            navigate('/users/home')
+        }
+      }
+      useEffect(() => {
+        get_user_data()
+    }, []); 
   return(
         <>
     <div className="  fullPage h-screen w-screen flex flex-row justify-center items-center ">
@@ -32,7 +60,7 @@ export default function Signup(){
                         
                             
                         <button className="  text-white font-gilroy font-bold text-4xl pr-[24px] mt-[24px]" >
-                          <Link to='/login'>LOGIN</Link>
+                          <Link to='/users/login'>LOGIN</Link>
                         </button>
                         
                         <button className="relative bg-white text-[#771079] font-gilroy font-bold text-4xl rounded-l-full p-[24px] mt-[24px] overflow-hidden">
@@ -50,16 +78,19 @@ export default function Signup(){
             </div>
 
             <div className="imputUserName  h-[40%] w-full flex flex-col items-center justify-center ">
-                 <Input path={email} text="Email" type="text" show={false}/>
-                 <Input path={user} text="Username"type="text"show={false}/>
-                 <Input path={password} text="Password"  show={true}/>
-
-            
-
+                 <Input onChange={(e) => setEmail(e.target.value)} path={email} text="Email" type="text" show={false}/>
+                 <Input onChange={(e) => setUsername(e.target.value)} path={user} text="Username"type="text"show={false}/>
+                 <Input onChange={(e) => setPassword(e.target.value)} path={password} text="Password" show={true}/>
             </div>
 
+            {errorMessage && (
+                    <div className="error-message">
+                        <p>{errorMessage}</p>
+                    </div>
+                )}
+
             <div className=" thirdDiv w-[100%] md:w-[70%] h-[10%] w-[70%] flex items-center  justify-center md:justify-end ">
-                <button className="signupButton h-[10%] w-[50%] md:w-[30%] pr-[20px] pl-[15px] pt-[10px] pb-[40px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-xl  " > Signup </button>
+                <button onClick={handleSubmit} className="signupButton h-[10%] w-[50%] md:w-[30%] pr-[20px] pl-[15px] pt-[10px] pb-[40px]  rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-xl  " > Signup </button>
             </div>
 
                 
