@@ -4,15 +4,16 @@ import axios from 'axios';
 
 export async function addMod (props){
     try{
-        const access_token = localStorage.getItem('access_token');
+        const admin_id = "1"
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/add_mod/',{
+            admin_id:admin_id,
             username : props.username , 
             password: props.password , 
             email : props.email
         },
         {
             headers:{
-                'Authorization': 'Bearer '+ access_token
+                'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NjEyODY0LCJpYXQiOjE3MDQzMTY4NjQsImp0aSI6ImI0YzBlZGZmZDg4OTQ4M2NhYjdhNTA1OWEyNTc0MmMxIiwidXNlcl9pZCI6MX0.oWk1xzCSyiGnrAGEN6fCrEDpjfXEVebMkPK_DMl-akI"
             }
         }
         );
@@ -22,11 +23,9 @@ export async function addMod (props){
     }catch (error) {
         if (error.response) {
             // The request was made, but the server responded with an error status
-            console.error(error.response.data);
             return error.response.data['error'] || 'An unexpected error occurred';
         } else if (error.request) {
             // The request was made, but no response was received
-            console.error('No response received from the server');
             return 'No response received from the server';
         } else {
             // Something happened in setting up the request that triggered an Error

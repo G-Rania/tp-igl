@@ -10,9 +10,9 @@ import Login from './Pages/Login';
 import Home from './Pages/HomePage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './Pages/Sign-up.jsx';
-/*import ManageMods from './Pages/ManageMods.jsx';
+import ManageMods from './Pages/ManageMods.jsx';
 import UploadFile from './Pages/UploadFile.jsx';
-import AddModerator from './Components/AdminPage/AddModerator.jsx';*/
+import AddModerator from './Components/AdminPage/AddModerator.jsx';
 
 function App() {
   return (
