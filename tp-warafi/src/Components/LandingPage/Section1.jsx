@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react'
 import { Link } from "react-router-dom";
 import Logo from '../Logo'
 import background from '../../Images/LandingPage/FondDegrade.svg'
-//import background from "../../assets/background.svg";
 import chimie from '../../Images/LandingPage/Chimie.svg'
 import informatique from '../../Images/LandingPage/Informatique.svg'
 import maths from '../../Images/LandingPage/Mathematiques.svg'
