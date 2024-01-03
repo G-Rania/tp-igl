@@ -1,12 +1,15 @@
 import React, {useState} from "react";
-import logo from "../../assets/logo.svg";
-import pdf from "../../assets/pdf.svg";
-import fav from "../../assets/fav.svg";
-import details from "../../assets/details.svg"
+import pdf from "../../assets/Usersview/pdf.svg";
+import fav from "../../assets/Usersview/fav.svg";
+import notfav from "../../assets/Usersview/notfav.svg";
+import details from "../../assets/Usersview/showdetails.svg"
 import {addFavorite, removeFavorite} from "../../api/users/favorites_api"
 
 
-const Article = () => {
+
+
+
+const Article = ({article}) => {
 
     const [favorite, setApproved] = useState(false);
 
@@ -17,6 +20,7 @@ const Article = () => {
         }else{
          const response = removeFavorite();   
         }
+
         setApproved(!favorite);
     }
 
@@ -25,11 +29,12 @@ const Article = () => {
     return(
         <div className="bg-[#E9E9E9] rounded-3xl mx-10 mt-16 h-72 shadow-xl flex flex-row">
             <div className="bg-none"> 
-            <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 mt-3">The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage </h1>
-            <p className="text-[#333333] font2 text-xs lg:text-sm ml-7 mt-7">Jian-bo CHANG, Ren-zhi WANG, Ming FENG <br/> <br/>
-            <span className="text-[#F87F0F]">September 2023</span> <br/> <br/>
+
+            <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 mt-3">{article.title}</h1>
+            <p className="text-[#333333] font2 text-xs lg:text-sm ml-7 mt-7">{article.authors} <br/> <br/>
+            <span className="text-[#F87F0F]">{article.date}</span> <br/> <br/>
             <span className="font1">Keywords: </span> <br/>
-            intracranial hemorrhages, artificial intelligence, review
+            {article.keywords}
             </p>
             </div>
              <div className="flex justify-start flex-col h-28 lg:flex-row lg:justify-around w-64 sm:w-120 ml-auto mt-5 sm:mt-auto sm:mr-14 md:mr-24 md:mb-7 lg:mb-0 ">
@@ -40,7 +45,8 @@ const Article = () => {
                     <img src={pdf} alt="lien vers pdf"></img>
                 </a>
                 <button>
-                <img src={favorite? fav : pdf} alt="state article" onClick={handleFavorite} className="w-6 ml-16 lg:w-8 lg:m-4"></img>
+                <img src={favorite? fav : notfav} alt="state article" onClick={handleFavorite} className="w-6 ml-16 lg:w-8 lg:m-4"></img>
+
                 </button>
              </div>
         </div>

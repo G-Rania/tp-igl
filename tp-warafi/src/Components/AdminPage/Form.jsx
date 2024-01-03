@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default function Form({ formData, setFormData }) {
-  const handleChange = (field, value) => {
-    setFormData((prevData) => ({ ...prevData, [field]: value }));
-  };
-
+export default function () {
   return (
     <form className='h-[60%] w-full flex flex-col items-center justify-around'>
       <div className='  h-[20%] w-full flex flex-col items-start justify-evenly'>

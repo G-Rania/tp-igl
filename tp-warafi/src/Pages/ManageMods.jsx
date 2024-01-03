@@ -66,12 +66,12 @@ const ManageMods = (props) => {
             <div className="flex flex-col justify-start items-center w-[100%] ">
 
                 
-              <div className="flex flex-row items-center w-[100%] ml-14 h-8  bg-[#F87F0F] bg-opacity-30">
-                  <div className="font1  ml-4 mr-56">Name</div>
-                  <div className= "font1 mr-56 ml-10">Email</div>
-                  <div className="font1 ml-20">Password</div>
+              <div className="flex flex-row items-center w-[100%] ml-14 h-8  bg-[#F87F0F] bg-opacity-30 custom-sm:ml-6">
+                  <div className="font1  ml-4 mr-56 custom-sm:mr-16">Name</div>
+                  <div className= "font1 mr-56 ml-10 custom-sm:mr-20 custom-sm:ml-2">Email</div>
+                  <div className="font1 ml-20 custom-sm:ml-10">Password</div>
               </div>
-              <div className="w-[100%]  flex flex-col space-y-4 mt-5 ml-20">
+              <div className="w-[100%]  flex flex-col space-y-4 mt-5 ml-20 custom-sm:ml-6">
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
 
