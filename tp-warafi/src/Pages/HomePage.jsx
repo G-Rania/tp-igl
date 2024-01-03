@@ -6,6 +6,7 @@ import logo from "../assets/white_logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Article from "../Components/Userview/Article_user";
+import Footer from "../Components/Footer";
 import User from "../models/user"
 
 
@@ -26,6 +27,11 @@ export default function Home(){
     const goToLandingPage = () => {
         navigate('/'); // Navigating to the specified route '/'
       };
+
+    const goToFavoritesPage = () => {
+        navigate('/users/favorites');
+    }; 
+
     const userSignOut = async (e) => {
         try{
             const signedOut = signOut()
@@ -62,7 +68,7 @@ export default function Home(){
                             </div>
                         </div>
                         <div className=' group relative bg-none justify-around md:items-end'>
-                            <button className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
+                            <button onClick={goToFavoritesPage} className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
                             <div className=" opacity-0  p-0 w-full transition duration-300 ease-in-out group-hover:opacity-100">
                                 <div className=" w-full h-0.5 bg-white "></div>
                             </div>
@@ -87,6 +93,8 @@ export default function Home(){
                 </div>
             </div>
             <Article article={article}/>
+            <div className="mt-16"></div>
+            <Footer/>
         </div>
         
     );
