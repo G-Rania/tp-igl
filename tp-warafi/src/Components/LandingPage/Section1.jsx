@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import { Link } from "react-router-dom";
 import Logo from '../Logo'
 import background from '../../Images/LandingPage/FondDegrade.svg'
+//import background from "../../assets/background.svg";
 import chimie from '../../Images/LandingPage/Chimie.svg'
 import informatique from '../../Images/LandingPage/Informatique.svg'
 import maths from '../../Images/LandingPage/Mathematiques.svg'
@@ -22,10 +23,9 @@ const Section1 = ()=> {
   }, [currentImage,images.length]);
 
     return (
-      <div className=' bg-white bg-center bg-cover bg-no-repeat flex justify-start h-[130vh] w-full overflow-hidden'  style={{ 
+      <div className='w-full'>
+      <div className=' bg-white bg-center bg-cover bg-no-repeat flex justify-start h-[140vh] min-w-full overflow-hidden m-0 p-0'  style={{ 
         backgroundImage: `url(${background})`,
-        margin: 0,
-        padding: 0
         }}>
           <div className='z-10 flex flex-col justify-start p-4 h-full'>
            <Logo/>
@@ -47,7 +47,7 @@ const Section1 = ()=> {
                 <img src={images[currentImage]} alt='Chimie' className=' -translate-x-10 mt-10 w-72 h-72 sm:w-96 sm:mt-3 sm:-translate-x-20 sm:h-96 lg:w-120 lg:h-120 lg:mt-0 lg:-translate-x-8 xl:w-120 xl:h-120 xl:ml-52 xl:mt-0 xl:-translate-x-32 lg:ml-32 sm:ml-24 '></img>
               </div>
           </div>
-         
+          </div>
       </div>
     )
   }
