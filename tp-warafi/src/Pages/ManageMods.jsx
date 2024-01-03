@@ -47,6 +47,9 @@ const ManageMods = (props) => {
           setAddIsOpen(true);
         }
 
+    
+
+
     return(
         <div className="flex flex-row justify-start">
             <Adminbarre onSignout={handleSignout} which={1}  />

@@ -21,6 +21,8 @@ function App() {
         <Route path="/users/home" element={<Home />} />
         <Route path='/users/signup' element ={<Signup />}></Route>
         <Route path='/mods' element={<Modview />}></Route>
+        <Route path='/admin/manageMods' element={<ManageMods />}></Route>
+
       </Routes>
     </BrowserRouter>  
   );

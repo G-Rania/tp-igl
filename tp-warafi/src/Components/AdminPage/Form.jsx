@@ -1,23 +1,41 @@
-import React from 'react'
+import React from 'react';
 
-export default function () {
+export default function Form({ formData, setFormData }) {
+  const handleChange = (field, value) => {
+    setFormData((prevData) => ({ ...prevData, [field]: value }));
+  };
+
   return (
-    <form className='h-[60%] w-full flex flex-col items-center justify-around '>
-        
-          <div className='  h-[20%] w-full flex flex-col items-start justify-evenly ' >
-            <label htmlFor="email"> email</label>
-            <input type="email"id='email' className=' w-full rounded bg-gray-300 ' />
-          </div>
+    <form className='h-[60%] w-full flex flex-col items-center justify-around'>
+      <div className='  h-[20%] w-full flex flex-col items-start justify-evenly'>
+        <label htmlFor='email'>Email</label>
+        <input
+          type='email'
+          id='email'
+          onChange={(e) => handleChange('email', e.target.value)}
+          className='w-full rounded bg-gray-300'
+        />
+      </div>
 
-          <div className='   h-[20%] w-full flex flex-col items-start justify-evenly '>
-          <label htmlFor="username"> username</label>
-            <input type="text" id='username' className='w-full rounded bg-gray-300' />
-          </div>
+      <div className='   h-[20%] w-full flex flex-col items-start justify-evenly'>
+        <label htmlFor='username'>Username</label>
+        <input
+          type='text'
+          id='username'
+          onChange={(e) => handleChange('username', e.target.value)}
+          className='w-full rounded bg-gray-300'
+        />
+      </div>
 
-          <div className='  h-[20%] w-full  flex flex-col items-start justify-evenly '>
-          <label htmlFor="Password"> password</label>
-            <input type="password" id='password' className='w-full rounded bg-gray-300' />
-          </div>
+      <div className='  h-[20%] w-full  flex flex-col items-start justify-evenly'>
+        <label htmlFor='password'>Password</label>
+        <input
+          type='password'
+          id='password'
+          onChange={(e) => handleChange('password', e.target.value)}
+          className='w-full rounded bg-gray-300'
+        />
+      </div>
     </form>
-    )
+  );
 }
