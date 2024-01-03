@@ -1,10 +1,8 @@
 import React from 'react'
 import Form from './Form';
 import { addMod } from '../../api/admin/mod_api';
-import { addFavorite } from '../../api/users/favorites_api';
 import { useState } from 'react';
 import { useRef } from 'react';
-
 import { text } from '@fortawesome/fontawesome-svg-core';
 export default function AddModerator ({ isOpen, onClose }) {
     
@@ -20,7 +18,7 @@ export default function AddModerator ({ isOpen, onClose }) {
     const handleAddModerator= async (e) => {
         e.preventDefault() ;
         try {
-            const response = await addFavorite( )
+            const response = await addMod( formData )
             if (response==true) {
                 setMessage('Moderator Added Succesfully ') 
                 setIsSuccess(true)
