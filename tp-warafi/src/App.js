@@ -22,8 +22,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/users/login" element={<Login_admin/>} />
-        <Route path='/admin' element={<ManageMods/>}/>
+        <Route path="/users/login" element={<Login />} />
+        <Route path="/users/home" element={<Home />} />
+        <Route path='/users/signup' element ={<Signup />}></Route>
+        <Route path='/mods' element={<Modview />}></Route>
+        <Route path='/admin/manageMods' element={<ManageMods />}></Route>
+
+
       </Routes>
     </BrowserRouter>  
   );

@@ -5,9 +5,9 @@ export default function RemoveMod({ isOpen, onClose }) {
  return (
      <div className={`absolute w-full h-full flex items-center justify-center ${isOpen ? 'flex' : 'hidden'}`}>
         <div className="absolute w-full h-full backdrop-blur-sm z-10" onClick={onClose}></div>
-        <div className=' absolute z-20 flex flex-col items-center justify-around h-1/2 xl:w-1/3 ml:w-1/2 flex border-[5px] border-solid border-[#771079] bg-white rounded-[20px]'>      
+        <div className=' absolute z-20 flex flex-col items-center justify-around h-[380px] w-[380px] custom-sm:w-[80%] costum-sm:h-[50%] flex border-[5px] border-solid border-[#771079] bg-white rounded-[20px]'>      
             <div >
-                <h1 className='text-black font-gilroy font-bold text-[30px] '>Remove Moderator</h1>
+                <h1 className='text-black font-gilroy font-bold text-[30px]  '>Remove Moderator</h1>
             </div>
 
             <div className='w-full text-black text-center font-gilroy font-light text-[30px] px-[20px]'>
