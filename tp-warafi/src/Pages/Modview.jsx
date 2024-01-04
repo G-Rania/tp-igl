@@ -2,6 +2,8 @@ import React,{useState} from "react";
 import Modbarre from "../Components/Modview/Modbarre";
 import Article from "../Components/Modview/Article";
 import Signout from "../Components/AdminPage/Signout";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "../api/moderator/auth_api";
 
 
 const Modview = () => {
@@ -15,16 +17,35 @@ const Modview = () => {
     }
 
     const [isOpen,setIsSignoutOpen]= useState(false); 
+
+  
+
     const onClose = ()=>{
       setIsSignoutOpen(false);
     }
+
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
     }
 
+
+    const navigate = useNavigate();
+
+
+      const onSignout = async (e) => {
+        try{
+            const signedOut = signOut()
+            if (signedOut){
+                navigate('/users/login')
+            }
+        }catch(e){}
+    }
+
+    
+
     return(
         <div className="flex flex-row">
-        <Modbarre onSignout={handleSignout}></Modbarre>
+        <Modbarre handleSignout={handleSignout}></Modbarre>
         <div className="flex flex-col ml-44">
             <Article article={article}/>
             <Article article={article}/>
@@ -32,7 +53,7 @@ const Modview = () => {
             <Article article={article}/>
             <Article article={article}/>
         </div>
-        <Signout isOpen={isOpen} onClose={onClose} ></Signout>
+        <Signout isOpen={isOpen} onClose={onClose} onSignout={onSignout}></Signout>
        </div>
         
     )

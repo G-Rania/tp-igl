@@ -5,8 +5,10 @@ import article from "../../assets/Usersview/article.svg"
 import signout from "../../assets/Usersview/signout.svg"
 import triangle from "../../assets/Usersview/triangle.svg"
 
-const Modbarre = ({onSignout}) =>{
 
+const Modbarre = ({handleSignout}) =>{    
+    
+    
     const [page, setPage] = useState(0);
 
     const handleArticlesPage = () => {
@@ -30,8 +32,9 @@ const Modbarre = ({onSignout}) =>{
             <div className="flex flex-row">
                <div className="flex  flex-col xl:flex-row ml-6 mr-6">
                   <img src={signout} alt="signout" className=" mb-3 h-6 sm:h-10 xl:ml-3"></img>
-                  <button className="bg-none text-white font1 text-xs sm:text-sm xl:text-base lg:ml-3 justify-start" onClick={()=>{handleSignoutPage(); onSignout()}}>Sign out</button>
+                  <button className="bg-none text-white font1 text-xs sm:text-sm xl:text-base lg:ml-3 justify-start" onClick={()=>{handleSignoutPage(); handleSignout()}}>Sign out</button>
                </div>
+
                <img src={page===1? triangle : null} alt="" className="translate-x-1 xl:translate-x-12 lg:translate-x-1 sm:translate-x-1"></img>
             </div>
         </div>

@@ -6,6 +6,10 @@ import SignoutDiv from "../Components/AdminPage/Signout";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import ModInfo from "../Components/AdminPage/Modinfo";
 
+import { signOut } from "../api/admin/auth_api";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const ManageMods = (props) => {
@@ -22,6 +26,18 @@ const ManageMods = (props) => {
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
     }
+
+    const navigate = useNavigate();
+
+
+    const onSignout = async (e) => {
+      try{
+          const signedOut = signOut()
+          if (signedOut){
+              navigate('/users/login')
+          }
+      }catch(e){}
+  }
 
     const [editIsOpen, setEditIsOpen]= useState(false);
     const closeEditDiv = ()=>{
@@ -81,7 +97,7 @@ const ManageMods = (props) => {
 
             
          <EditModDiv isOpen={editIsOpen} onClose={closeEditDiv}></EditModDiv>
-         <SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>
+         <SignoutDiv isOpen={isOpen} onClose={onClose} onSignout={onSignout}></SignoutDiv>
          <RemoveModDiv isOpen={removeIsOpen} onClose={closeRemovetDiv}></RemoveModDiv>
          <AddModDiv isOpen={addIsOpen} onClose={closeAddtDiv}></AddModDiv>
 
