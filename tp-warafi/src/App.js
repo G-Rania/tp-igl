@@ -22,7 +22,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/users/login" element={<ArticleDetails />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/users/login" element={<Login />} />
+        <Route path="/users/home" element={<Home />} />
+        <Route path='/users/signup' element ={<Signup />}></Route>
+        <Route path='/mods' element={<Modview />}></Route>
+        <Route path='/admin/manageMods' element={<ManageMods />}></Route>
+
+
       </Routes>
     </BrowserRouter>
   );

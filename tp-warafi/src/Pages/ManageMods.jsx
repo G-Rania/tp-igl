@@ -5,8 +5,10 @@ import RemoveModDiv from "../Components/AdminPage/RemoveMod";
 import SignoutDiv from "../Components/AdminPage/Signout";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import ModInfo from "../Components/AdminPage/Modinfo";
+
 import { signOut } from "../api/admin/auth_api";
 import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -61,6 +63,9 @@ const ManageMods = (props) => {
           setAddIsOpen(true);
         }
 
+    
+
+
     return(
         <div className="flex flex-row justify-start">
             <Adminbarre onSignout={handleSignout} which={1}  />
@@ -83,8 +88,6 @@ const ManageMods = (props) => {
                   <div className="font1 ml-20 custom-sm:ml-10">Password</div>
               </div>
               <div className="w-[100%]  flex flex-col space-y-4 mt-5 ml-20 custom-sm:ml-6">
-                 <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
-                 <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
                  <ModInfo modInfo={mod} onEditMod={handleEditMod} onRemoveMod={handleRemoveMod} />
 
