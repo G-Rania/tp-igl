@@ -10,12 +10,29 @@ import User from "../models/user";
 import SignoutDiv from "../Components/AdminPage/Signout";
 import filter from "../assets/filter.svg";
 import Filter from "../Components/Userview/Filter";
+import { search } from "../api/users/search_api";
 
 
 
 
 export default function Home(){
     const [isOpen,setIsSignoutOpen]= useState(false); 
+
+    const [query, setQuery] = useState("")
+    const [articles, setArticles] = useState([])
+
+    const user_serach=async()=>{
+        try{
+        const params = {
+            q:query
+        }
+        const response = await search(params)
+        
+        setArticles(Array.from(response))
+
+        }catch(e){}
+    }
+
     const onClose = ()=>{
       setIsSignoutOpen(false);
     }
@@ -85,11 +102,12 @@ export default function Home(){
                     <div className=" pr-3 flex flex-row items-center outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey">
                     
                     <input
+                        onChange={(e) => setQuery(e.target.value)}
                         type="text"
                         placeholder="Enter your username"
                         className="px-3 outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey "
                     />
-                    <button>
+                    <button onClick={user_serach}>
                     <FontAwesomeIcon icon={faSearch} className=" text-white text-xl bg-orange-500 p-2 rounded-full" />
                     </button>
                     </div>
@@ -103,13 +121,19 @@ export default function Home(){
                
                 </div>
             </div>
-            <Article />
-            <Article />
-            <Article />
+            <div>
+            {articles.map((article) => (
+          <div  key={article.id}>
+            <Article key={article.id} article={article}/>
+          </div>
+        
+        ))}
+        </div>
+
             
             <SignoutDiv  isOpen={isOpen} onClose={onClose} signOut={userSignOut}></SignoutDiv>
             {isFilter && (
-                    <Filter close={closeFilter}></Filter>
+                    <Filter close={closeFilter} query={query} setArticles={setArticles}></Filter>
                 )}
             
             
