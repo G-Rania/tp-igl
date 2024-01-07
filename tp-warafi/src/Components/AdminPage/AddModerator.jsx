@@ -54,7 +54,7 @@ export default function AddModerator({ isOpen, onClose }) {
         </div>
         <Form setFormData={setFormData} resetForm={resetForm} setResetForm={setResetForm}/>
         {message && (
-          <div className={`${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
+          <div className={`text-[14px] font-normal ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
             {message}
           </div>
         )}
