@@ -24,4 +24,4 @@ Discover articles seamlessly. Our platform leverages Elastic Search, ensuring ac
    - Perform CRUD operations on mods.
    - Oversee the integrity and functionality of Datalink.
 
-Datalink is more than a search engine; it's a vibrant community where individuals can connect, share, and explore the richness of human expression. Join us on Datalink and embark on a journey of discovery and connection.
+Datalink is more than a search engine; it's a vibrant community where individuals can connect, and explore the richness of human expression. Join us on Datalink and embark on a journey of discovery and connection.
