@@ -1,10 +1,13 @@
-import React ,{useState}from "react";
+import React ,{useState, useEffect}from "react";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import cloud from "../assets/Usersview/cloud.svg"
 import SignoutDiv from "../Components/AdminPage/Signout";
+import { getData } from "../api/admin/auth_api";
+import { useNavigate } from "react-router-dom";
 
 
 const UploadFile = (props) => {
+    const navigate = useNavigate();
     const [isOpen,setIsSignoutOpen]= useState(false); 
     const onClose = ()=>{
       setIsSignoutOpen(false);
@@ -17,6 +20,16 @@ const UploadFile = (props) => {
     const Upload = ()=>{
       setUpload(true);
     }
+    const get_admin_data = async (e) => {
+      const authenticated = await getData();
+      if(authenticated != true){
+          navigate('/admin/login')
+      }
+    }
+    useEffect(() => {
+      // Function to run when the component mounts
+      get_admin_data();
+  }, []); 
     return(
         <div className="flex flex-row justify-start">
              <Adminbarre onSignout={handleSignout} which={0} />

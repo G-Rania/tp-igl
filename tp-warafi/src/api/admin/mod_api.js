@@ -5,15 +5,16 @@ import axios from 'axios';
 export async function addMod (props){
     try{
         const admin_id= localStorage.getItem('admin_id')
-        const access_token = localStorage.getItem('access_token');
+        const access_token = localStorage.getItem('admin_access_token');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/add_mod/',{
+            admin_id: admin_id,
             username : props.username , 
             password: props.password , 
             email : props.email
         },
         {
             headers:{
-                'Authorization': 'Bearer '+ access_token
+                'Authorization': 'Bearer '+access_token
             }
         }
         );
@@ -37,15 +38,15 @@ export async function addMod (props){
 }
 export async function removeModerator (){
     try{
-        const access_token = localStorage.getItem('access_token');
-        const user_id = localStorage.getItem('admin_id');
+        const access_token = localStorage.getItem('admin_access_token');
+        const admin_id = localStorage.getItem('admin_id');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/remove_mod/',{
-           admin_id:"1",
-           mod_id:"14"
+           admin_id:admin_id,
+           mod_id:1
         },
         {
             headers:{
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NjI1NzU3LCJpYXQiOjE3MDQzMjk3NTcsImp0aSI6IjM3ZDJkMTM5Nzg4MzQ3OTY5Mjc5OGEzYjAwYWQ0MjU1IiwidXNlcl9pZCI6MX0.MHUWnaa8Wei6pAxip7nVY1wxmEszn3Xxf5AqX_p8QSw'
+                'Authorization': 'Bearer '+access_token
             }
         }
         );

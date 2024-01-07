@@ -1,9 +1,9 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import Modbarre from "../Components/Modview/Modbarre";
 import Article from "../Components/Modview/Article";
 import Signout from "../Components/AdminPage/Signout";
-import { useNavigate } from "react-router-dom";
-import { signOut } from "../api/moderator/auth_api";
+import { useNavigate} from "react-router-dom";
+import { signOut, getData } from "../api/moderator/auth_api";
 
 
 const Modview = () => {
@@ -36,10 +36,21 @@ const Modview = () => {
         try{
             const signedOut = signOut()
             if (signedOut){
-                navigate('/users/login')
+                navigate('/mods/login')
             }
         }catch(e){}
     }
+
+    const get_mod_data = async (e) => {
+      const authenticated = await getData();
+      if(authenticated != true){
+          navigate('/mods/login')
+      }
+    }
+    useEffect(() => {
+      // Function to run when the component mounts
+      get_mod_data();
+  }, []); 
 
     
 
@@ -53,7 +64,7 @@ const Modview = () => {
             <Article article={article}/>
             <Article article={article}/>
         </div>
-        <Signout isOpen={isOpen} onClose={onClose} onSignout={onSignout}></Signout>
+        <Signout isOpen={isOpen} onClose={onClose} signOut={onSignout}></Signout>
        </div>
         
     )

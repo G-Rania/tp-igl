@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import image from "../assets/Frame8.svg";
 import logo from "../assets/logo.svg";
 import userVector from "../assets/userVector.svg";
@@ -8,7 +8,7 @@ import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
 //import { Link } from "react-router-dom";
-import {handleLogin} from "../api/admin/auth_api";
+import {handleLogin, getData} from "../api/admin/auth_api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -25,7 +25,7 @@ export default function Login_admin() {
         try {
           const response = await handleLogin(username, password);
           if (response == true){
-            navigate('/admin')
+            navigate('/admin/upload')
           }else{
             setErrorMessage(response)
           }// After successful login, perform necessary actions
@@ -42,6 +42,16 @@ export default function Login_admin() {
   const handlePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   }
+  const get_admin_data = async (e) => {
+        
+    const authenticated = await getData();
+    if(authenticated == true) {
+        navigate('/admin/upload')
+    }
+  }
+  useEffect(() => {
+    get_admin_data();
+}, []);
 
   return (
     <>
