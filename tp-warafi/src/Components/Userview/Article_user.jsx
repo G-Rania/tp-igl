@@ -1,13 +1,15 @@
 import React, {useState} from "react";
-import logo from "../../assets/logo.svg";
-import pdf from "../../assets/pdf.svg";
-import fav from "../../assets/fav.svg";
-import details from "../../assets/details.svg"
+import pdf from "../../assets/Usersview/pdf.svg";
+import fav from "../../assets/Usersview/fav.svg";
+import notfav from "../../assets/Usersview/notfav.svg";
+import details from "../../assets/Usersview/showdetails.svg"
 import {addFavorite, removeFavorite} from "../../api/users/favorites_api"
 import { set } from "date-fns";
 
 
+
 const Article = ({article}) => {
+
 
     
     const [favorite, setFavorite] = useState(article.favorite)
@@ -49,7 +51,8 @@ const Article = ({article}) => {
                     <img src={pdf} alt="lien vers pdf"></img>
                 </a>
                 <button>
-                <img src={favorite? fav : pdf} alt="state article" onClick={handleFavorite} className="w-6 ml-16 lg:w-8 lg:m-4"></img>
+                <img src={favorite? fav : notfav} alt="state article" onClick={handleFavorite} className="w-6 ml-16 lg:w-8 lg:m-4"></img>
+
                 </button>
              </div>
         </div>

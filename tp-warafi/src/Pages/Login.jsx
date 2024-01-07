@@ -21,6 +21,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -35,7 +36,7 @@ export default function Login() {
       const get_user_data = async (e) => {
         
         const authenticated = await getData();
-        if(authenticated == true){
+        if(authenticated == true) {
             navigate('/users/home')
         }
       }

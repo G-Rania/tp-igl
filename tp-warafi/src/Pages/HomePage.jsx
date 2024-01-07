@@ -11,6 +11,8 @@ import SignoutDiv from "../Components/AdminPage/Signout";
 import filter from "../assets/filter.svg";
 import Filter from "../Components/Userview/Filter";
 import { search } from "../api/users/search_api";
+import Footer from "../Components/Footer";
+
 
 
 
@@ -52,6 +54,11 @@ export default function Home(){
     const goToLandingPage = () => {
         navigate('/'); // Navigating to the specified route '/'
       };
+
+    const goToFavoritesPage = () => {
+        navigate('/users/favorites');
+    }; 
+
     const userSignOut = async (e) => {
         try{
             const signedOut = signOut()
@@ -88,7 +95,7 @@ export default function Home(){
                             </div>
                         </div>
                         <div className=' group relative bg-none justify-around md:items-end'>
-                            <button className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
+                            <button onClick={goToFavoritesPage} className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
                             <div className=" opacity-0  p-0 w-full transition duration-300 ease-in-out group-hover:opacity-100">
                                 <div className=" w-full h-0.5 bg-white "></div>
                             </div>
@@ -121,6 +128,7 @@ export default function Home(){
                
                 </div>
             </div>
+
             <div>
             {articles.map((article) => (
           <div  key={article.id}>
@@ -137,6 +145,10 @@ export default function Home(){
                 )}
             
             
+
+            <Article article={article}/>
+            <div className="mt-16"></div>
+            <Footer/>
         </div>
         
     );
