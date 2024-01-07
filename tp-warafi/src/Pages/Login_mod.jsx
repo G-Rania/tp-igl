@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import image from "../assets/Frame8.svg";
 import logo from "../assets/logo.svg";
 import userVector from "../assets/userVector.svg";
@@ -8,7 +8,7 @@ import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
 //import { Link } from "react-router-dom";
-import {handleLogin} from "../api/moderator/auth_api";
+import {handleLogin, getData} from "../api/moderator/auth_api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -42,6 +42,17 @@ export default function Login_mod() {
   const handlePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   }
+
+  const get_mod_data = async (e) => {
+        
+    const authenticated = await getData();
+    if(authenticated == true) {
+        navigate('/mods')
+    }
+  }
+  useEffect(() => {
+    get_mod_data();
+}, []);
 
   return (
     <>

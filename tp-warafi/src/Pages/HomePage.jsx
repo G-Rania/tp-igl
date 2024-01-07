@@ -52,7 +52,7 @@ export default function Home(){
 
     const navigate = useNavigate();
     const goToLandingPage = () => {
-        navigate('/'); // Navigating to the specified route '/'
+        navigate('/users/home/'); // Navigating to the specified route '/'
       };
 
     const goToFavoritesPage = () => {
@@ -146,7 +146,6 @@ export default function Home(){
             
             
 
-            <Article article={article}/>
             <div className="mt-16"></div>
             <Footer/>
         </div>

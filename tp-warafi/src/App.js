@@ -30,6 +30,9 @@ function App() {
         <Route path='/mods' element={<Modview />}></Route>
         <Route path='/admin/upload' element={<UploadFile />}></Route>
         <Route path='/admin/managemods' element={<ManageMods />}></Route>
+        <Route path="/admin/login" element={<Login_admin/>} />
+        <Route path="/mods/login" element={<Login_mod/>} />
+        <Route path='/users/favorites' element={<FavoritesPage/>}></Route>
       </Routes>
     </BrowserRouter>
   );

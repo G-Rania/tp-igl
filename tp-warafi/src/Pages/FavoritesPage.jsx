@@ -11,16 +11,11 @@ import logo from "../assets/white_logo.svg";
 const FavoritesPage = () =>{
 
      /* ceci est pour le test*/
-     const article = {
-        title: "The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage",
-        authors: "Jian-bo CHANG, Ren-zhi WANG, Ming FENG",
-        date: "September 2023",
-        keywords:" intracranial hemorrhages, artificial intelligence, review",
-    } 
+
 
     const navigate = useNavigate();
     const goToLandingPage = () => {
-        navigate('/'); // Navigating to the specified route '/'
+        navigate('/users/home'); // Navigating to the specified route '/'
       };
 
     const goToFavoritesPage = () => {
@@ -79,11 +74,6 @@ const FavoritesPage = () =>{
                 </div>
 
         <div className="flex flex-col justify-center">
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
-            <Article article={article}/>
             <div className="h-16"></div>
             <Footer/>
             </div>
