@@ -1,11 +1,10 @@
 import React from 'react'
 
-export default function Signout({ isOpen, onClose,onSignout }) {
 
-    
+export default function Signout({ isOpen, onClose, signOut }) {
    
  return (
-     <div className={`absolute w-full h-full flex items-center justify-center ${isOpen ? 'flex' : 'hidden'}`}>
+     <div className={`absolute w-full h-full flex items-center justify-center dialog-overlay ${isOpen ? 'flex' : 'hidden'}`}>
         <div className="absolute w-full h-full backdrop-blur-sm z-10" onClick={onClose}></div>
 
         <div className=' absolute z-20 flex flex-col items-center justify-around h-[380px] w-[380px] custom-sm:w-[80%] costum-sm:h-[50%]  border-[5px] border-solid border-[#771079] bg-white rounded-[20px]'>      
@@ -19,8 +18,8 @@ export default function Signout({ isOpen, onClose,onSignout }) {
             <div>
             <button className=" font-bold text-white text-[16px] bg-[#F87F0F] rounded px-4 py-2" 
                 onClick={() => {
-                  // Add sign-out logic here
-                onClose(); onSignout()}}>
+                signOut();
+                onClose();}}>
                   Sign Out
             </button>
             </div>
