@@ -9,7 +9,7 @@ import fav from "../assets/Usersview/fav.svg";
 import notfav from "../assets/Usersview/notfav.svg";
 
 
-const ArticleDetails = () =>{
+const ArticleDetails_user = () =>{
 
     /* ceci est pour le test*/
     const article = {
@@ -17,6 +17,9 @@ const ArticleDetails = () =>{
        authors: "Jian-bo CHANG, Ren-zhi WANG, Ming FENG",
        date: "September 2023",
        keywords:" intracranial hemorrhages, artificial intelligence, review",
+       abstract: "Ceci est initialement mon test du abstract",
+       content: "ceci est initialement mon test du content",
+       references: "ceci est initialement mon test des références",
    } 
 
    const [favorite, setApproved] = useState(false);
@@ -105,20 +108,38 @@ const ArticleDetails = () =>{
                     </button>
                   </div>
               </div>
-
-              <div className="bg-[#E9E9E9] rounded-3xl mx-20 mt-40 h-72 shadow-xl flex flex-row mb-40">
-                <div className="flex flex-row space-x-20">
-                    <div className="flex flex-col">
-                        <h1 className="font1 text-[#F87F0F] text-3xl mt-8 ml-8">Authors:</h1>
-                        <p className="font2 text-[#333333] mt-10 ml-8">{article.authors}</p>
-                    </div>
-                </div>
               </div>
+              
+              <div className="flex justify-center items-center ">
+              <div className="bg-[#E9E9E9] w-[80vh] sm:w-[90vh] md:w-[150vh] rounded-3xl mx-20 mt-40 h-60 shadow-xl flex flex-row space-x-28 md:space-x-60 items-center mb-40 ">
+               
+                    <div className="flex flex-col">
+                        <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl  ml-8">Authors:</h1>
+                        <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-8">{article.authors}</p>
+                    </div>
+                    <div className="h-44 rounded-full w-1.5 md:w-1 bg-[#771079]"></div>
+                    <div className="flex flex-col -translate-x-10 md:-translate-x-40">
+                        <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl  ">Keywords:</h1>
+                        <p className="font2 text-[#333333] text-base md:text-lg mt-6 ">{article.keywords}</p>
+                    </div>
+                    </div>
+              </div>
+              <div className="w-screen">
+              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
+              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.abstract}</p>
+              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
+              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.content}</p>
+              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
+              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.references}</p>
+              </div>
+
+              <div className="h-32"></div>
+              <Footer/>
                </div>
-               </div>
+               
 )
 
 }
 
-export default ArticleDetails
+export default ArticleDetails_user
 

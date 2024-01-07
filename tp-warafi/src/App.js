@@ -16,20 +16,14 @@ import UploadFile from './Pages/UploadFile.jsx';
 import AddModerator from './Components/AdminPage/AddModerator.jsx';
 import Login_mod from './Pages/Login_mod.jsx';
 import Login_admin from './Pages/Login_admin.jsx';
-import ArticleDetails from './Pages/ArticleDetails.jsx';
+import ArticleDetails_user from './Pages/ArticleDetails_user.jsx';
+import ArticleDetails_mod from './Pages/ArticleDetails_mod.jsx';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/users/login" element={<Login />} />
-        <Route path="/users/home" element={<Home />} />
-        <Route path='/users/signup' element ={<Signup />}></Route>
-        <Route path='/mods' element={<Modview />}></Route>
-        <Route path='/admin/manageMods' element={<ManageMods />}></Route>
-
-
+      <Route path="/" element={<ArticleDetails_mod />} />
       </Routes>
     </BrowserRouter>
   );
