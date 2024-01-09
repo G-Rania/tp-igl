@@ -42,7 +42,7 @@ export async function removeModerator (){
         const admin_id = localStorage.getItem('admin_id');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/remove_mod/',{
            admin_id:admin_id,
-           mod_id:1
+           mod_id:2
         },
         {
             headers:{

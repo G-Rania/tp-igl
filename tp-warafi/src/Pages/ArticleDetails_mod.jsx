@@ -12,10 +12,10 @@ import pen from "../assets/Usersview/pen.svg";
 
 
 
-const ArticleDetails_mod = () =>{
+const ArticleDetails_mod = ({article}) =>{
 
     /* ceci est pour le test*/
-    const article = {
+    const article2 = {
        title: "The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage",
        authors: "Jian-bo CHANG, Ren-zhi WANG, Ming FENG",
        date: "September 2023",
@@ -25,7 +25,7 @@ const ArticleDetails_mod = () =>{
        references: "ceci est initialement mon test des références",
    } 
 
-   const [approved, setApproved] = useState(false);
+   const [approved, setApproved] = useState(article.approved);
    const handleApproval = () =>{
       /*if(!favorite){
         const response = addFavorite();
@@ -92,7 +92,7 @@ const ArticleDetails_mod = () =>{
                   <h1 className="text-[#771079] font1 text-xl sm:text-2xl md:text-4xl ml-12 mt-12 md:mr-44 ">{article.title}</h1>
                   <div className="absolute flex flex-row bg-none space-x-10 sm:space-x-40 lg:space-x-[100vh]">
                     <p className="text-[#333333] font1 text-xl mt-12 ml-12">Published: 
-                    <span className="font2 ml-4">{article.date}</span>
+                    <span className="font2 ml-4">{article.publication_date}</span>
                     </p>
                     <div className="flex flex-row space-x-4 lg:space-x-10  justify-around items-center mt-12 ">
                     <a href="vers pdf" className="w-8 md:w-10  flex flex-row">
@@ -129,7 +129,7 @@ const ArticleDetails_mod = () =>{
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.abstract}</p>
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
-              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.content}</p>
+              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.full_text}</p>
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.references}</p>
               </div>
