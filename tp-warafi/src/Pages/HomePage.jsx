@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import {signOut, getData} from "../api/users/auth_api";
 import { useNavigate } from 'react-router-dom';
 import background from "../assets/background.svg";
@@ -6,26 +6,59 @@ import logo from "../assets/white_logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Article from "../Components/Userview/Article_user";
-import User from "../models/user"
+import User from "../models/user";
+import SignoutDiv from "../Components/AdminPage/Signout";
+import filter from "../assets/filter.svg";
+import Filter from "../Components/Userview/Filter";
+import { search } from "../api/users/search_api";
+import Footer from "../Components/Footer";
+
 
 
 
 
 export default function Home(){
+    const [isOpen,setIsSignoutOpen]= useState(false); 
 
-     /* ceci est pour le test*/
-     const article = {
-        title: "The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage",
-        authors: "Jian-bo CHANG, Ren-zhi WANG, Ming FENG",
-        date: "September 2023",
-        keywords:" intracranial hemorrhages, artificial intelligence, review",
-    } 
+    const [query, setQuery] = useState("")
+    const [articles, setArticles] = useState([])
 
+    const user_serach=async()=>{
+        try{
+        const params = {
+            q:query
+        }
+        const response = await search(params)
+        
+        setArticles(Array.from(response))
+
+        }catch(e){}
+    }
+
+    const onClose = ()=>{
+      setIsSignoutOpen(false);
+    }
+    const handleSignout = ()=>{
+      setIsSignoutOpen(true);
+    }
+
+    const [isFilter, setFilter] = useState(false);
+    const closeFilter = ()=>{
+        setFilter(false)
+    }
+    const openFilter = () => {
+        setFilter(true)
+    }
 
     const navigate = useNavigate();
     const goToLandingPage = () => {
-        navigate('/'); // Navigating to the specified route '/'
+        navigate('/users/home/'); // Navigating to the specified route '/'
       };
+
+    const goToFavoritesPage = () => {
+        navigate('/users/favorites');
+    }; 
+
     const userSignOut = async (e) => {
         try{
             const signedOut = signOut()
@@ -62,31 +95,59 @@ export default function Home(){
                             </div>
                         </div>
                         <div className=' group relative bg-none justify-around md:items-end'>
-                            <button className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
+                            <button onClick={goToFavoritesPage} className='bg-none  text-white text-md lg:text-lg font1 w-20 md:w-auto whitespace-nowrap'>Favorites</button>
                             <div className=" opacity-0  p-0 w-full transition duration-300 ease-in-out group-hover:opacity-100">
                                 <div className=" w-full h-0.5 bg-white "></div>
                             </div>
                         </div>
                     
-                            <button onClick={userSignOut} className='  text-white bg-orange-500 text-md lg:text-lg rounded-lg font1 px-4   md:w-auto whitespace-nowrap'>Sign out</button>
+                            <button onClick={handleSignout} className='  text-white bg-orange-500 text-md lg:text-lg rounded-lg font1 px-4   md:w-auto whitespace-nowrap'>Sign out</button>
                        
                     </div>
                 </div>
+                <div className="flex flex-row space-x-4 items-center">
                     <div className=" pr-3 flex flex-row items-center outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey">
                     
                     <input
+                        onChange={(e) => setQuery(e.target.value)}
                         type="text"
                         placeholder="Enter your username"
                         className="px-3 outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey "
                     />
-                    <button>
+                    <button onClick={user_serach}>
                     <FontAwesomeIcon icon={faSearch} className=" text-white text-xl bg-orange-500 p-2 rounded-full" />
                     </button>
                     </div>
+                    <button onClick={openFilter} className="bg-orange-500 rounded-xl h-[80%] px-3 text-white text-lg font1">
+                        <div className="flex flex-row space-x-2">
+                            <img src={filter}></img>
+                            <p>Filter</p>
+                        </div>
+                    </button>
+                </div>    
                
                 </div>
             </div>
-            <Article article={article}/>
+
+            <div>
+            {articles.map((article) => (
+          <div  key={article.id}>
+            <Article key={article.id} article={article}/>
+          </div>
+        
+        ))}
+        </div>
+
+            
+            <SignoutDiv  isOpen={isOpen} onClose={onClose} signOut={userSignOut}></SignoutDiv>
+            {isFilter && (
+                    <Filter close={closeFilter} query={query} setArticles={setArticles}></Filter>
+                )}
+            
+            
+
+            <div className="mt-16"></div>
+            <Footer/>
         </div>
         
     );

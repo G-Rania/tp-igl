@@ -41,7 +41,7 @@ export default function Login() {
         }
       }
       useEffect(() => {
-        get_user_data()
+        get_user_data();
     }, []); 
   const [passwordVisible, setPasswordVisible ] = useState(false);
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddModDiv from "../Components/AdminPage/AddModerator";
 import EditModDiv from "../Components/AdminPage/EditModerator";
 import RemoveModDiv from "../Components/AdminPage/RemoveMod";
@@ -7,6 +7,10 @@ import Adminbarre from "../Components/AdminPage/Adminbarre";
 import ModInfo from "../Components/AdminPage/Modinfo";
 import { getMods } from "../api/admin/mod_api";
 import { useEffect } from "react";
+
+import { signOut, getData } from "../api/admin/auth_api";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -45,6 +49,18 @@ const ManageMods = (props) => {
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
     }
+
+    const navigate = useNavigate();
+
+
+    const onSignout = async (e) => {
+      try{
+          const signedOut = signOut()
+          if (signedOut){
+              navigate('/admin/login')
+          }
+      }catch(e){}
+  }
 
     const [editIsOpen, setEditIsOpen]= useState(false);
     const closeEditDiv = ()=>{
@@ -97,6 +113,16 @@ const ManageMods = (props) => {
     };
     
   
+        const get_admin_data = async (e) => {
+          const authenticated = await getData();
+          if(authenticated != true){
+              navigate('/admin/login')
+          }
+        }
+        useEffect(() => {
+          // Function to run when the component mounts
+          get_admin_data();
+      }, []); 
 
     return(
         <div className="flex  flex-row justify-start">
@@ -131,6 +157,7 @@ const ManageMods = (props) => {
          <SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>
          <RemoveModDiv isOpen={removeIsOpen} onClose={closeRemovetDiv} id={modSelectionné.id} updateTable={removeModFromTable} ></RemoveModDiv>
          <AddModDiv isOpen={addIsOpen} onClose={closeAddtDiv} updateTable={addModToTable}></AddModDiv>
+
         </div>
     )
 }

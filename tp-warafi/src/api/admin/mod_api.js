@@ -5,7 +5,7 @@ import axios from 'axios';
 export async function addMod ( data ){
     try{
         const admin_id= localStorage.getItem('admin_id')
-        const access_token = localStorage.getItem('access_token');
+        const access_token = localStorage.getItem('admin_access_token');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/add_mod/',{
             admin_id:"1",
             username : data.username , 
@@ -16,7 +16,6 @@ export async function addMod ( data ){
             headers:{
                 //'Authorization': 'Bearer '+ access_token
                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
-
             }
         }
         );
@@ -42,8 +41,8 @@ export async function addMod ( data ){
 }
 export async function removeModerator (modId){
     try{
-        const access_token = localStorage.getItem('access_token');
-        const user_id = localStorage.getItem('admin_id');
+        const access_token = localStorage.getItem('admin_access_token');
+        const admin_id = localStorage.getItem('admin_id');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/remove_mod/',{
            admin_id:"1",
            mod_id:modId
@@ -51,6 +50,7 @@ export async function removeModerator (modId){
         {
             headers:{
                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
+
             }
         }
         );
