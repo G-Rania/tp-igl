@@ -4,9 +4,9 @@ import { useState , useEffect } from 'react';
 import { updateMod } from '../../api/admin/mod_api';
 export default function EditModerator ({ isOpen, onClose, updateTable , ancienMod }) {
    
-  useEffect(()=>{
+ /* useEffect(()=>{
     setResetTime(true)
-  } )
+  } )*/
     const [message, setMessage] = useState(''); /*For the message response of the request to the server */
     const [isSuccess, setIsSuccess] = useState(false);/** for the color of the message */
   
@@ -15,7 +15,8 @@ export default function EditModerator ({ isOpen, onClose, updateTable , ancienMo
         e.preventDefault();
         try {
         const response = await updateMod(formData);
-        if (response === true) {
+        //console.log(response)
+        if (response.status === 200) {
           setMessage('Moderator Updated Successfully ');
           updateTable(formData);
           setIsSuccess(true);
@@ -24,7 +25,7 @@ export default function EditModerator ({ isOpen, onClose, updateTable , ancienMo
           setIsSuccess(false);
         }
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         setMessage('Unexpected , please try again');
         setIsSuccess(false);
       }
@@ -41,10 +42,10 @@ export default function EditModerator ({ isOpen, onClose, updateTable , ancienMo
 
       
       const [formData, setFormData] = useState(ancienMod); /*used to track the imput fields inside the Form component */
-      const[resetTime , setResetTime]= useState(false); /**to reset all the fields when the page is closed */
+      //const[resetTime , setResetTime]= useState(false); /**to reset all the fields when the page is closed */
       
       //console.log(ancienMod)
-      console.log(formData)
+      //console.log(formData)
 
 
       return (
@@ -56,7 +57,7 @@ export default function EditModerator ({ isOpen, onClose, updateTable , ancienMo
                 <h1 className=' font-bold text-[30px] custom-sm:text-[25px] '>Edit Moderator</h1>
             </div>
             
-            <Form setFormData={setFormData} resetData={ancienMod} resetTime={resetTime} setResetTime={setResetTime} />
+            <Form setFormData={setFormData} resetData={ancienMod} resetTime={isOpen}  />
             {message && (
           <div className={`text-[14px] font-normal ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
             {message}
