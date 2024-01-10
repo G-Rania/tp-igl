@@ -12,7 +12,7 @@ export default function Form({ setFormData, resetData, resetTime, setResetTime }
 
     useEffect(() => {
     setFormData(resetData)
-  console.log(resetTime)
+    console.log(resetTime)
      if (resetTime) {
       mailRef.current.value = resetData.email;
       usernameRef.current.value = resetData.username;

@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from 'axios';
 
-export async function addMod ({data , setId}){
+export async function addMod ( data ){
     try{
         const admin_id= localStorage.getItem('admin_id')
         const access_token = localStorage.getItem('access_token');
@@ -21,9 +21,9 @@ export async function addMod ({data , setId}){
         }
         );
 
-        setId(response.data['mod_id'])
-        console.log(response.data['mod_id']);
-        return true
+        //console.log(response.status)
+        //console.log('the mod id in server',response.data['mod_id']);
+        return response
         
     }catch (error) {
         if (error.response) {

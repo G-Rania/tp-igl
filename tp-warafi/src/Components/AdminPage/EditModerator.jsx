@@ -43,7 +43,7 @@ export default function EditModerator ({ isOpen, onClose, updateTable , ancienMo
       const [formData, setFormData] = useState(ancienMod); /*used to track the imput fields inside the Form component */
       const[resetTime , setResetTime]= useState(false); /**to reset all the fields when the page is closed */
       
-      console.log(ancienMod)
+      //console.log(ancienMod)
       console.log(formData)
 
 

@@ -17,30 +17,31 @@ export default function AddModerator({ isOpen, onClose, updateTable }) {
   const [message, setMessage] = useState(''); /*For the message response of the request to the server */
   const [isSuccess, setIsSuccess] = useState(false);/** for the color of the message */
   const[resetTime , setResetTime]= useState(false); /**to reset all the fields when the page is closed */
-  const [id,setId] = useState('');
   /*when the add button is clicked */
-  const handleAddModerator = async (e) => {
+  const handleAddModerator = (e) => {
     e.preventDefault();
-    try {
-      const response = await addMod({ data: formData, setId: setId });
-      if (response === true) {
-        setMessage('Moderator Added Successfully ');
-        formData.id = id;
-        console.log('the form added :',formData)
-        updateTable(formData);
-        console.log('added mod is :', formData)
-        setIsSuccess(true);
-      } else {
-        setMessage(response);
+  
+     addMod( formData )
+      .then(response => {
+        if (response.status === 200) {
+          setMessage('Moderator Added Successfully ');
+          //console.log(response)
+          formData.id=response.data['mod_id']
+          updateTable(formData);
+          console.log('added mod is :', formData);
+          setIsSuccess(true);
+        } else {
+          setMessage(response);
+          setIsSuccess(false);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        setMessage('Unexpected error occurred, please try again');
         setIsSuccess(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setMessage('Unexpected error occurred, please try again');
-      setIsSuccess(false);
-    }
+      });
   };
-
+  
   /**when the add moderator page is closed */
   const handleClose = () => {
     setResetTime(true);
