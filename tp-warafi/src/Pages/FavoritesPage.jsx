@@ -10,8 +10,6 @@ import logo from "../assets/white_logo.svg";
 
 const FavoritesPage = () =>{
 
-     /* ceci est pour le test*/
-
 
     const navigate = useNavigate();
     const goToLandingPage = () => {
@@ -43,7 +41,7 @@ const FavoritesPage = () =>{
     }, []); 
 
     return (
-        <div>
+      
            <div className="w-full">
             <div className=' top-0 left-0 bg-white bg-cover bg-center bg-no-repeat flex h-[20vh]  w-full'  style={{ 
                 backgroundImage: `url(${background})`,
@@ -73,13 +71,13 @@ const FavoritesPage = () =>{
                 </div>
                 </div>
 
-        <div className="flex flex-col justify-center">
-            <div className="h-16"></div>
-            <Footer/>
+    
+                <div className="h-52"></div>
+              <Footer/>
             </div>
-        </div>
+           
 
-        </div>
+        
     )
 
 }
