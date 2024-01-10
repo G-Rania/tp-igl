@@ -2,17 +2,18 @@ import React from 'react'
 import { useState } from 'react';
 import { removeModerator } from '../../api/admin/mod_api';
 
-export default function RemoveMod({ isOpen, onClose }) {
+export default function RemoveMod({ isOpen, onClose , id , updateTable  }) {
   const [message, setMessage] = useState(''); /*For the message response of the request to the server */
   const [isSuccess, setIsSuccess] = useState(false);/** for the color of the message */
 
-  /*when the add button is clicked */
+  /*when the remove button is clicked */
   const handleRemoveMod = async (e) => {
     e.preventDefault();
     try {
-      const response = await removeModerator();
+      const response = await removeModerator(id);
       if (response === true) {
         setMessage('Moderator Removed Successfully ');
+        updateTable(id);
         setIsSuccess(true);
       } else {
         setMessage(response);

@@ -1,12 +1,13 @@
 import React from 'react';
 import Form from './Form';
-import { addMod } from '../../api/admin/mod_api';
+import { addMod, updateMod } from '../../api/admin/mod_api';
 import { useState } from 'react';
 import { text } from '@fortawesome/fontawesome-svg-core';
 
-export default function AddModerator({ isOpen, onClose }) {
+export default function AddModerator({ isOpen, onClose, updateTable }) {
   
     const initialFormData = {
+    id:'',
     email: '',
     username: '',
     password: '',
@@ -15,30 +16,35 @@ export default function AddModerator({ isOpen, onClose }) {
   const [formData, setFormData] = useState(initialFormData); /*used to track the imput fields inside the Form component */
   const [message, setMessage] = useState(''); /*For the message response of the request to the server */
   const [isSuccess, setIsSuccess] = useState(false);/** for the color of the message */
-  const[resetForm , setResetForm]= useState(false); /**to reset all the fields when the page is closed */
-
+  //const[resetTime , setResetTime]= useState(false); /**to reset all the fields when the page is closed */
   /*when the add button is clicked */
-  const handleAddModerator = async (e) => {
+  const handleAddModerator = (e) => {
     e.preventDefault();
-    try {
-      const response = await addMod(formData);
-      if (response === true) {
-        setMessage('Moderator Added Successfully ');
-        setIsSuccess(true);
-      } else {
-        setMessage(response);
+  
+     addMod( formData )
+      .then(response => {
+        if (response.status === 200) {
+          setMessage('Moderator Added Successfully ');
+          //console.log(response)
+          formData.id=response.data['mod_id']
+          updateTable(formData);
+          console.log('added mod is :', formData);
+          setIsSuccess(true);
+        } else {
+          setMessage(response);
+          setIsSuccess(false);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        setMessage('Unexpected error occurred, please try again');
         setIsSuccess(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setMessage('Unexpected error occurred, please try again');
-      setIsSuccess(false);
-    }
+      });
   };
-
+  
   /**when the add moderator page is closed */
   const handleClose = () => {
-    setResetForm(true);
+    //setResetTime(true);
     setMessage('');
     setIsSuccess(false);
     onClose();
@@ -52,7 +58,7 @@ export default function AddModerator({ isOpen, onClose }) {
         <div className=' h-[20%] w-full flex items-center justify-start '>
           <h1 className=' font-bold text-[30px] custom-sm:text-[25px] '>Add Moderator</h1>
         </div>
-        <Form setFormData={setFormData} resetForm={resetForm} setResetForm={setResetForm}/>
+        <Form setFormData={setFormData} resetData={initialFormData} resetTime={isOpen} />
         {message && (
           <div className={`text-[14px] font-normal ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
             {message}
