@@ -4,11 +4,20 @@ import pdf from '../../assets/Usersview/pdf.svg'
 import approvedarticle from '../../assets/Usersview/approved.svg'
 import nonapprovedarticle from '../../assets/Usersview/nonapproved.svg'
 import { approve, desapprove } from "../../api/moderator/articles_api";
+import { useNavigate } from 'react-router-dom';
 
 
 const Article = ({article}) => {
 
     const [approved, setApproved] = useState(article.approved);
+    const navigate = useNavigate();
+    const showDetails =() =>{
+        navigate(`/mods/article/${article.id}`,
+            {state:  article } // Pass the article as part of the location state
+          );
+        };
+
+
     const handleApproval = async () =>{
         if(!approved){
             const response = await approve(article.id)
@@ -35,7 +44,7 @@ const Article = ({article}) => {
             </p>
             </div>
              <div className="flex justify-start flex-col h-28 lg:flex-row lg:justify-around w-64 sm:w-120 ml-auto mt-5 sm:mt-auto sm:mr-14 md:mr-24 md:mb-7 lg:mb-0 ">
-                <button className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
+                <button onClick={showDetails} className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
                     <img src={showdetails} alt="display details"></img>
                 </button>
                 <a href="vers pdf" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">
