@@ -11,6 +11,7 @@ import { getFavorites } from "../api/users/favorites_api";
 
 const FavoritesPage = () =>{
 
+
      /* ceci est pour le test*/
 
     const [articles, setArticles] = useState([])
@@ -53,7 +54,7 @@ const FavoritesPage = () =>{
     }, []); 
 
     return (
-        <div>
+      
            <div className="w-full">
             <div className=' top-0 left-0 bg-white bg-cover bg-center bg-no-repeat flex h-[20vh]  w-full'  style={{ 
                 backgroundImage: `url(${background})`,
@@ -92,12 +93,12 @@ const FavoritesPage = () =>{
         ))}
         </div>
         <div className="flex flex-col justify-center">
-            <div className="h-16"></div>
+            <div className="h-52"></div>
             <Footer/>
             </div>
-        </div>
+           
 
-        </div>
+        
     )
 
 }

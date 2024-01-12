@@ -170,10 +170,10 @@ if( article !== null){
               <div className="w-screen">
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.abstract}</p>
-              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
+              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Content:</h1>
               {<p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-6 mb-24" >{NewlineText(article.full_text)}</p>}
               
-              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
+              <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">References:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">
               {article.references.map((keyword, index) => (
             <div key={index}>
