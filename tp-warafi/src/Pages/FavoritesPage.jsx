@@ -1,16 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Article from '../Components/Userview/Article_user' 
 import Footer from "../Components/Footer";
 import {signOut, getData} from "../api/users/auth_api";
 import { useNavigate } from 'react-router-dom';
 import background from "../assets/background.svg";
 import logo from "../assets/white_logo.svg";
+import { getFavorites } from "../api/users/favorites_api";
 
 
 
 const FavoritesPage = () =>{
 
 
+     /* ceci est pour le test*/
+
+    const [articles, setArticles] = useState([])
     const navigate = useNavigate();
     const goToLandingPage = () => {
         navigate('/users/home'); // Navigating to the specified route '/'
@@ -35,9 +39,18 @@ const FavoritesPage = () =>{
             navigate('/users/login')
         }
       }
+    const get_favorites = async (e) => {
+        const articles = await getFavorites();
+        if (articles != false){
+            setArticles(Array.from(articles))
+        }else{
+            console.log("error");
+        }
+    }  
     useEffect(() => {
         // Function to run when the component mounts
         get_user_data();
+        get_favorites();
     }, []); 
 
     return (
@@ -71,9 +84,17 @@ const FavoritesPage = () =>{
                 </div>
                 </div>
 
-    
-                <div className="h-52"></div>
-              <Footer/>
+                <div>
+            {articles.map((article) => (
+          <div  key={article.id}>
+            <Article key={article.id} article={article}/>
+          </div>
+        
+        ))}
+        </div>
+        <div className="flex flex-col justify-center">
+            <div className="h-52"></div>
+            <Footer/>
             </div>
            
 

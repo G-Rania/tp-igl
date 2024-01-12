@@ -9,13 +9,33 @@ import approved from "../assets/Usersview/approved.svg";
 import nonapproved from "../assets/Usersview/nonapproved.svg";
 import trash from "../assets/Usersview/trash.svg";
 import pen from "../assets/Usersview/pen.svg";
+import { useLocation } from 'react-router-dom';
 
 
 
 const ArticleDetails_mod = () =>{
 
+    function NewlineText(full_text) {
+        const formattedText = full_text.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+          ));
+        
+          return (
+            
+            <pre>
+              {formattedText}
+            </pre>
+         
+          );
+    }
+
+    const location = useLocation();
+    
     /* ceci est pour le test*/
-    const article = {
+    const article2 = {
        title: "The application of artificial intelligence in clinical diagnosis and treatment of intracranial hemorrhage",
        authors: "Jian-bo CHANG, Ren-zhi WANG, Ming FENG",
        date: "September 2023",
@@ -25,6 +45,7 @@ const ArticleDetails_mod = () =>{
        references: "ceci est initialement mon test des références",
    } 
 
+   const [article, setArticle] = useState(null)
    const [approved, setApproved] = useState(false);
    const handleApproval = () =>{
       /*if(!favorite){
@@ -54,6 +75,11 @@ const ArticleDetails_mod = () =>{
        }catch(e){}
        
    }
+   useEffect(()=>{
+    const articleMod  = location.state;
+    setArticle(articleMod)
+    setApproved(articleMod.approved)
+   })
    /*const get_user_data = async (e) => {
        const authenticated = await getData();
        if(authenticated != true){
@@ -64,7 +90,7 @@ const ArticleDetails_mod = () =>{
        // Function to run when the component mounts
        get_user_data();
    }, []); */
-
+if( article !== null){
    return (
           <div className="w-full">
            <div className=' top-0 left-0 bg-white bg-cover bg-center bg-no-repeat flex h-[20vh]  w-full'  style={{ 
@@ -92,7 +118,7 @@ const ArticleDetails_mod = () =>{
                   <h1 className="text-[#771079] font1 text-xl sm:text-2xl md:text-4xl ml-12 mt-12 md:mr-44 ">{article.title}</h1>
                   <div className="absolute flex flex-row bg-none space-x-10 sm:space-x-40 lg:space-x-[100vh]">
                     <p className="text-[#333333] font1 text-xl mt-12 ml-12">Published: 
-                    <span className="font2 ml-4">{article.date}</span>
+                    <span className="font2 ml-4">{article.publication_date}</span>
                     </p>
                     <div className="flex flex-row space-x-4 lg:space-x-10  justify-around items-center mt-12 ">
                     <a href="vers pdf" className="w-8 md:w-10  flex flex-row">
@@ -112,16 +138,32 @@ const ArticleDetails_mod = () =>{
               </div>
               
               <div className="flex justify-center items-center ">
-              <div className="bg-[#E9E9E9] w-[80vh] sm:w-[90vh] md:w-[150vh] rounded-3xl mx-20 mt-40 h-60 shadow-xl flex flex-row space-x-28 md:space-x-60 items-center mb-40 ">
+              <div className="bg-[#E9E9E9] w-[80vh] sm:w-[90vh] md:w-[150vh] rounded-3xl mx-20 mt-40 h-60 shadow-xl flex flex-row space-x-16 md:space-x-20 items-center mb-40 ">
                
-                    <div className="flex flex-col">
-                        <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl  ml-8">Authors:</h1>
-                        <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-8">{article.authors}</p>
-                    </div>
+              <div className="flex flex-col">
+    <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-8">Authors:</h1>
+    <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-8">
+        {article.authors.map((author, index) => (
+            <span key={index}>
+                {author}
+                {index !== article.authors.length - 1 && ", "}
+            </span>
+        ))}
+    </p>
+</div>
+        
+                     
                     <div className="h-44 rounded-full w-1.5 md:w-1 bg-[#771079]"></div>
-                    <div className="flex flex-col -translate-x-10 md:-translate-x-40">
-                        <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl  ">Keywords:</h1>
-                        <p className="font2 text-[#333333] text-base md:text-lg mt-6 ">{article.keywords}</p>
+                    <div className="flex flex-col -translate-x-6 md:-translate-x-10">
+                        <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ">Keywords:</h1>
+                        <p className="font2 text-[#333333] text-base md:text-lg mt-6 ">
+        {article.keywords.map((keyword, index) => (
+            <span key={index}>
+                {keyword}
+                {index !== article.keywords.length - 1 && ", "}
+            </span>
+        ))}
+    </p>
                     </div>
                     </div>
               </div>
@@ -129,9 +171,18 @@ const ArticleDetails_mod = () =>{
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Abstract:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.abstract}</p>
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">Content:</h1>
-              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.content}</p>
+              {<p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-6 mb-24" >{NewlineText(article.full_text)}</p>}
+              
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">References:</h1>
-              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.references}</p>
+              <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">
+              {article.references.map((keyword, index) => (
+            <div key={index}>
+                -{keyword}
+                {index !== article.keywords.length - 1 && " "}
+            </div>
+        ))}
+              
+              </p>
               </div>
 
               <div className="h-32"></div>
@@ -139,7 +190,7 @@ const ArticleDetails_mod = () =>{
                </div>
                
 )
-
+        }
 }
 
 export default ArticleDetails_mod

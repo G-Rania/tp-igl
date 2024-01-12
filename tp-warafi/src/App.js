@@ -28,6 +28,7 @@ function App() {
         <Route path="/users/home" element={<Home />} />
         <Route path='/users/signup' element ={<Signup />}></Route>
         <Route path='/mods' element={<Modview />}></Route>
+        <Route path="/mods/article/:id" element={<ArticleDetails_mod />}></Route>
         <Route path='/admin/upload' element={<UploadFile />}></Route>
         <Route path='/admin/managemods' element={<ManageMods />}></Route>
         <Route path="/admin/login" element={<Login_admin/>} />
