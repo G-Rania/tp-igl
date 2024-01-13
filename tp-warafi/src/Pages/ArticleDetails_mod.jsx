@@ -9,10 +9,12 @@ import approved from "../assets/Usersview/approved.svg";
 import nonapproved from "../assets/Usersview/nonapproved.svg";
 import trash from "../assets/Usersview/trash.svg";
 import pen from "../assets/Usersview/pen.svg";
+import RemoveModDiv from "../Components/AdminPage/RemoveMod";
+import RemoveArticle from "../Components/Modview/removearticle.jsx"
 
 
 
-const ArticleDetails_mod = () =>{
+const ArticleDetails_mod = (articleSelectionné) =>{
 
     /* ceci est pour le test*/
     const article = {
@@ -24,7 +26,6 @@ const ArticleDetails_mod = () =>{
        content: "ceci est initialement mon test du content",
        references: "ceci est initialement mon test des références",
    } 
-
    const [approved, setApproved] = useState(false);
    const handleApproval = () =>{
       /*if(!favorite){
@@ -35,6 +36,13 @@ const ArticleDetails_mod = () =>{
 
        setApproved(!approved);
    }
+   const [removeIsOpen, setRemoveIsOpen]= useState(false);
+   const closeRemovetDiv = ()=>{
+       setRemoveIsOpen(false);
+     }
+     const handleRemoveMod = ()=>{
+       setRemoveIsOpen(true);
+     }
 
        
 
@@ -95,6 +103,7 @@ const ArticleDetails_mod = () =>{
                     <span className="font2 ml-4">{article.date}</span>
                     </p>
                     <div className="flex flex-row space-x-4 lg:space-x-10  justify-around items-center mt-12 ">
+
                     <a href="vers pdf" className="w-8 md:w-10  flex flex-row">
                        <img src={pdf} alt="lien vers pdf"></img>
                     </a>
@@ -104,14 +113,17 @@ const ArticleDetails_mod = () =>{
                     <button >
                          <img src={pen}  alt="edit" className="w-6 md:w-8 "></img>
                     </button>
-                    <button>
+                    <button onClick={handleRemoveMod}>
                          <img src={trash}  alt="delete" className="w-6 md:w-8 "></img>
                     </button>
+
                   </div>
               </div>
               </div>
               
               <div className="flex justify-center items-center ">
+              <RemoveArticle isOpen={removeIsOpen} onClose={closeRemovetDiv} id={articleSelectionné.id}></RemoveArticle>
+
               <div className="bg-[#E9E9E9] w-[80vh] sm:w-[90vh] md:w-[150vh] rounded-3xl mx-20 mt-40 h-60 shadow-xl flex flex-row space-x-28 md:space-x-60 items-center mb-40 ">
                
                     <div className="flex flex-col">
@@ -132,10 +144,13 @@ const ArticleDetails_mod = () =>{
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.content}</p>
               <h1 className="font1 text-[#F87F0F] text-2xl md:text-3xl ml-20">References:</h1>
               <p className="font2 text-[#333333] text-base md:text-lg mt-6 ml-20 mb-24">{article.references}</p>
+
               </div>
+
 
               <div className="h-32"></div>
               <Footer/>
+
                </div>
                
 )

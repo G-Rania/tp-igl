@@ -1,12 +1,51 @@
 import React ,{useState, useEffect}from "react";
+import { text } from '@fortawesome/fontawesome-svg-core';
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import cloud from "../assets/Usersview/cloud.svg"
-import SignoutDiv from "../Components/AdminPage/Signout";
+import SignoutDiv from "../Components/AdminPage/Signout"
+import Form from './Form';
 import { getData } from "../api/admin/auth_api";
 import { useNavigate } from "react-router-dom";
+import { addArticle } from "../api/admin/article_api";
 
 
 const UploadFile = (props) => {
+
+
+  const initialFormData = {
+    id:'',
+    email: '',
+    username: '',
+  };
+
+ const [formData, setFormData] = useState(initialFormData); /*used to track the imput fields inside the Form component */
+  const [message, setMessage] = useState(''); /*For the message response of the request to the server */
+  const [isSuccess, setIsSuccess] = useState(false)
+  
+  const handleAddArticle = (e) => {
+  e.preventDefault();
+
+   addArticle( formData )
+    .then(response => {
+      if (response.status === 200) {
+        setMessage('Article Added Successfully ');
+        //console.log(response)
+        formData.id=response.data['mod_id']
+        console.log('Added Article is :', formData);
+        setIsSuccess(true);
+      } else {
+        setMessage(response);
+        setIsSuccess(false);
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      setMessage('Unexpected error occurred, please try again');
+      setIsSuccess(false);
+    });
+};
+
+
     const navigate = useNavigate();
     const [isOpen,setIsSignoutOpen]= useState(false); 
     const onClose = ()=>{
@@ -30,6 +69,7 @@ const UploadFile = (props) => {
       // Function to run when the component mounts
       get_admin_data();
   }, []); 
+
     return(
         <div className="flex flex-row justify-start">
              <Adminbarre onSignout={handleSignout} which={0} />
@@ -53,7 +93,7 @@ const UploadFile = (props) => {
                  
                </div>
 
-               <button  onClick={Upload} className=" absolute bottom-16 right-52 m-2 transform translate-x-1/2 bg-orange-500 text-white   border-2 border-solid border-opacity-75 border-orange-500 font1 py-2 px-6 rounded">
+               <button  onClick={{Upload,handleAddArticle}} className=" absolute bottom-16 right-52 m-2 transform translate-x-1/2 bg-orange-500 text-white   border-2 border-solid border-opacity-75 border-orange-500 font1 py-2 px-6 rounded">
                           Upload
              </button>
 

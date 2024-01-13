@@ -1,7 +1,6 @@
 
 import './App.css'
 
-
 import Adminbarre from './Components/AdminPage/Adminbarre.jsx';
 import Modview from './Pages/Modview';
 import './index.css'
@@ -18,8 +17,11 @@ import Login_mod from './Pages/Login_mod.jsx';
 import Login_admin from './Pages/Login_admin.jsx';
 import ArticleDetails_user from './Pages/ArticleDetails_user.jsx';
 import ArticleDetails_mod from './Pages/ArticleDetails_mod.jsx';
+import React,{useEffect,useState}  from 'react';
 
 function App() {
+  const [articleSelectionné, setarticleSelectionné ]=useState()
+
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +29,8 @@ function App() {
         <Route path="/users/login" element={<Login />} />
         <Route path="/users/home" element={<Home />} />
         <Route path='/users/signup' element ={<Signup />}></Route>
-        <Route path='/mods' element={<Modview />}></Route>
+        <Route path='/mods' element={<Modview setarticleSelectionné={setarticleSelectionné}/>}></Route>
+        <Route path='/mods/article_details' element={<ArticleDetails_mod articleSelectionné={articleSelectionné}/>}></Route>
         <Route path='/admin/upload' element={<UploadFile />}></Route>
         <Route path='/admin/managemods' element={<ManageMods />}></Route>
         <Route path="/admin/login" element={<Login_admin/>} />

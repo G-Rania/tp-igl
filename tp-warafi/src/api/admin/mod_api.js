@@ -39,6 +39,7 @@ export async function addMod ( data ){
         }
     }
 }
+
 export async function removeModerator (modId){
     try{
         const access_token = localStorage.getItem('admin_access_token');

@@ -5,7 +5,7 @@ import approvedarticle from '../../assets/Usersview/approved.svg'
 import nonapprovedarticle from '../../assets/Usersview/nonapproved.svg'
 
 
-const Article = ({article}) => {
+const Article = ({ article ,onEditArticle, setArticleSelectionné })=>{
 
     const [approved, setApproved] = useState(false);
     const handleApproval = () =>{
@@ -23,7 +23,9 @@ const Article = ({article}) => {
             </p>
             </div>
              <div className="flex justify-start flex-col h-28 lg:flex-row lg:justify-around w-64 sm:w-120 ml-auto mt-5 sm:mt-auto sm:mr-14 md:mr-24 md:mb-7 lg:mb-0 ">
-                <button className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
+                <button  onClick={() => 
+                    {onEditArticle() 
+                    setArticleSelectionné(article)}} className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
                     <img src={showdetails} alt="display details"></img>
                 </button>
                 <a href="vers pdf" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">

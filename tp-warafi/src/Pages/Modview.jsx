@@ -6,7 +6,8 @@ import { useNavigate} from "react-router-dom";
 import { signOut, getData } from "../api/moderator/auth_api";
 
 
-const Modview = () => {
+const Modview = (setArticleSelectionné) => {
+    
 
     /* ceci est pour le test*/
     const article = {
@@ -55,10 +56,11 @@ const Modview = () => {
     
 
     return(
+       
         <div className="flex flex-row">
         <Modbarre handleSignout={handleSignout}></Modbarre>
         <div className="flex flex-col ml-44">
-            <Article article={article}/>
+            <Article article={article} setArticleSelectionné={setArticleSelectionné}/>
             <Article article={article}/>
             <Article article={article}/>
             <Article article={article}/>
