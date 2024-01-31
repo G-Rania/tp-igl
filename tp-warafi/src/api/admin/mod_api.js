@@ -74,7 +74,7 @@ export async function removeModerator (modId){
 
 export async function getMods(){
     try {
-        const token = localStorage.getItem("access_token");
+        const token = localStorage.getItem("admin_access_token");
         const admin_id = localStorage.getItem("admin_id");
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/get_mods/',
         {
@@ -108,8 +108,9 @@ export async function getMods(){
 
 export async function updateMod(props){
     try {
-        const token = localStorage.getItem("access_token");
+        const token = localStorage.getItem("admin_access_token");
         const admin_id = localStorage.getItem("admin_id");
+        console.log(props.id);
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/update_mod/',
         {
             admin_id : admin_id,
