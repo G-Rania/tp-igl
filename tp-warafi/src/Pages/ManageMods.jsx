@@ -30,7 +30,7 @@ const ManageMods = (props) => {
     const fetchData = async () => {
       try {
         const moderators = await getMods();
-        setModTable(moderators);
+        setModTable(Array.from(moderators));
       } catch (error) {
         console.error("Error fetching moderators:", error);
       }

@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import background from "../assets/background.svg";
 import logo from "../assets/white_logo.svg";
 import pdf from "../assets/Usersview/pdf.svg";
-import approved from "../assets/Usersview/approved.svg";
+import approved_icon from "../assets/Usersview/approved.svg";
 import nonapproved from "../assets/Usersview/nonapproved.svg";
 import trash from "../assets/Usersview/trash.svg";
 import pen from "../assets/Usersview/pen.svg";
 import { useLocation } from 'react-router-dom';
+import { approve, desapprove } from "../api/moderator/articles_api";
+
 
 
 
@@ -47,13 +49,12 @@ const ArticleDetails_mod = () =>{
 
    const [article, setArticle] = useState(null)
    const [approved, setApproved] = useState(false);
-   const handleApproval = () =>{
-      /*if(!favorite){
-        const response = addFavorite();
-        }else{
-         const response = removeFavorite();   
-        }*/
-
+   const handleApproval = async () =>{
+    if(!approved){
+        const response = await approve(article.id)
+    }else{
+        const response = await desapprove(article.id)
+    }
        setApproved(!approved);
    }
 
@@ -79,7 +80,7 @@ const ArticleDetails_mod = () =>{
     const articleMod  = location.state;
     setArticle(articleMod)
     setApproved(articleMod.approved)
-   })
+   }, [])
    /*const get_user_data = async (e) => {
        const authenticated = await getData();
        if(authenticated != true){
@@ -125,7 +126,7 @@ if( article !== null){
                        <img src={pdf} alt="lien vers pdf"></img>
                     </a>
                     <button onClick={handleApproval}>
-                         <img src={approved? approved : nonapproved}  alt="approval" className="w-6 md:w-8 "></img>
+                         <img src={approved? approved_icon : nonapproved}  alt="approval" className="w-6 md:w-8 "></img>
                     </button>
                     <button >
                          <img src={pen}  alt="edit" className="w-6 md:w-8 "></img>
