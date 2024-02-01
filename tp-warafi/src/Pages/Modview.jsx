@@ -2,9 +2,11 @@ import React,{useState, useEffect} from "react";
 import Modbarre from "../Components/Modview/Modbarre";
 import Article from "../Components/Modview/Article";
 import Signout from "../Components/AdminPage/Signout";
-import { useNavigate} from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import { signOut, getData } from "../api/moderator/auth_api";
 import { getNotApproved } from "../api/moderator/articles_api";
+import Mod from "../models/moderator"
+
 
 
 const Modview = () => {
@@ -12,7 +14,7 @@ const Modview = () => {
     const [articles, setArticles] = useState([])
 
     /* ceci est pour le test*/
-
+    
 
     const [isOpen,setIsSignoutOpen]= useState(false); 
 
@@ -28,6 +30,7 @@ const Modview = () => {
 
 
     const navigate = useNavigate();
+    
 
 
       const onSignout = async (e) => {
@@ -50,15 +53,19 @@ const Modview = () => {
       const articles = await getNotApproved();
       if (articles != false){
         setArticles(Array.from(articles))
+        
       }else{
         console.log("error");
       }
     }
 
+
     useEffect(() => {
+
       // Function to run when the component mounts
       get_mod_data();
       get_not_approved();
+      
   }, []); 
 
     
@@ -74,7 +81,7 @@ const Modview = () => {
           
           ))}
         </div>
-        <Signout isOpen={isOpen} onClose={onClose} signOut={onSignout}></Signout>
+        <Signout isOpen={isOpen} onClose={onClose} signOut={onSignout} ></Signout>
        </div>
         
     )

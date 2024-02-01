@@ -11,13 +11,21 @@ import trash from "../assets/Usersview/trash.svg";
 import pen from "../assets/Usersview/pen.svg";
 import { useLocation } from 'react-router-dom';
 import { approve, desapprove, updateArticle } from "../api/moderator/articles_api";
-import UpdateForm from "../Components/Modview/Update_form.jsx";
 import { set } from "date-fns";
+import RemoveArticle from "../Components/Modview/Remove_article";
 
 
 
 
 const ArticleDetails_mod = () =>{
+    const [removeIsOpen, setRemoveIsOpen]= useState(false);
+    const closeRemovetDiv = ()=>{
+        setRemoveIsOpen(false);
+      }
+      const handleRemoveMod = ()=>{
+        setRemoveIsOpen(true);
+      }
+
     const transformRefrencesToString = (refrences) =>{
         var text = "";
         for (let i = 0; i < refrences.length; i++) {
@@ -55,6 +63,8 @@ const ArticleDetails_mod = () =>{
     const [keywords_string, setKeywordsString] = useState('')
     const [updatedRefrences, setUpdatedRefrences] = useState(null)
     const [references_string, setRefrencesString] = useState('')
+
+    const [isRemoved, setRemoved] = useState(false);
     const handleEditClick = () => {
             setIsEditing(true);
     };
@@ -158,7 +168,7 @@ const ArticleDetails_mod = () =>{
        
    }
    useEffect(()=>{
-    const articleMod  = location.state;
+    const articleMod  = location.state.article;
     setArticle(articleMod)
     setApproved(articleMod.approved)
     setUpdatedTitle(articleMod.title)
@@ -261,14 +271,16 @@ if( article !== null){
                     ):<button onClick={handleEditClick} >
                     <img src={pen}  alt="edit" className="w-6 md:w-8 "></img>
                </button>}
-
-                    <button>
+                        {!isRemoved?(
+                    <button onClick={handleRemoveMod}>
                          <img src={trash}  alt="delete" className="w-6 md:w-8 "></img>
-                    </button>
+                    </button>)
+                    : <span className="text-red-600"> This article is removed</span>
+}
                   </div>
               </div>
               </div>
-              
+              <RemoveArticle isOpen={removeIsOpen} onClose={closeRemovetDiv} id={article.id} onRemove={setRemoved}></RemoveArticle>
               <div className="flex justify-center items-center ">
               <div className="bg-[#E9E9E9] w-[80vh] sm:w-[90vh] md:w-[150vh] rounded-3xl mx-20 mt-40 h-60 shadow-xl flex flex-row space-x-16 md:space-x-20 items-center mb-40 ">
                

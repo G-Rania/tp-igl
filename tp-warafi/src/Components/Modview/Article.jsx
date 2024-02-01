@@ -12,9 +12,13 @@ const Article = ({article}) => {
     const [approved, setApproved] = useState(article.approved);
     const navigate = useNavigate();
     const showDetails =() =>{
-        navigate(`/mods/article/${article.id}`,
-            {state:  article } // Pass the article as part of the location state
-          );
+        navigate(`/mods/article/${article.id}`,{
+        state: {
+            article: article,  // Pass the article as part of the location state
+            // Pass the updateArticles function
+        } ,
+        // Pass the article as part of the location state
+          });
         };
 
 

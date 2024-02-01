@@ -77,3 +77,17 @@ export async function updateArticle(params){
 };
 }
 
+export async function removeArticle(article_id){
+    try{
+    const response = await axios.delete('http://127.0.0.1:8000/articles/delete_article/',
+    {
+        data: { id: article_id },
+    },
+    
+    );
+    return true
+}catch(error){
+    return false
+};
+}
+
