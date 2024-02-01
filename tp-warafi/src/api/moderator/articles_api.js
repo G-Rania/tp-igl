@@ -64,3 +64,16 @@ export async function desapprove(article_id){
     }
 }
 
+export async function updateArticle(params){
+    try{
+    const response = await axios.post('http://127.0.0.1:8000/articles/update_article/',
+    params
+    
+    );
+    return true
+    
+}catch(error){
+    return false
+};
+}
+
