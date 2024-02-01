@@ -109,12 +109,13 @@ export default function Home(){
                     <div className=" pr-3 flex flex-row items-center outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey">
                     
                     <input
+                        id="searchInput"
                         onChange={(e) => setQuery(e.target.value)}
                         type="text"
                         placeholder="Enter your username"
                         className="px-3 outline-none w-80 md:w-120 rounded-[2rem] h-12 bg-grey "
                     />
-                    <button onClick={user_serach}>
+                    <button onClick={user_serach} id="searchButton">
                     <FontAwesomeIcon icon={faSearch} className=" text-white text-xl bg-orange-500 p-2 rounded-full" />
                     </button>
                     </div>

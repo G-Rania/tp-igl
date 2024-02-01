@@ -18,6 +18,8 @@ import Login_mod from './Pages/Login_mod.jsx';
 import Login_admin from './Pages/Login_admin.jsx';
 import ArticleDetails_user from './Pages/ArticleDetails_user.jsx';
 import ArticleDetails_mod from './Pages/ArticleDetails_mod.jsx';
+import ForgotPassword from './Components/Userview/Forgot_password.jsx';
+import ResetPassword from './Components/Userview/Reset_password.jsx';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/admin/login" element={<Login_admin/>} />
         <Route path="/mods/login" element={<Login_mod/>} />
         <Route path='/users/favorites' element={<FavoritesPage/>}></Route>
+        <Route path='/users/auth/forgot_password' element={<ForgotPassword />}></Route>
+        <Route path='/users/auth/reset_password' element={<ResetPassword />}></Route>
       </Routes>
     </BrowserRouter>
   );
