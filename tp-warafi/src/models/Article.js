@@ -1,4 +1,4 @@
-class Article{
+class ArticleModel{
   constructor(id, title, authors, keywords, publicationDate, url){
     this.id = id
     this.title = title;
