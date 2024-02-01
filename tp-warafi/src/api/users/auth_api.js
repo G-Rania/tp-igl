@@ -79,5 +79,36 @@ export async function signOut(){
     }
 }
 
+export async function forgotPassword(email){
+    try{
+        const response = await axios.post('http://127.0.0.1:8000/users/auth/forgot_password/',{
+            email:email
+        },
+      
+        );
+        return true
+    }catch(error){
+        console.log(error);
+    }
+}
+
+export async function resetPassword(reset_token, new_password){
+    try{
+        const response = await axios.post('http://127.0.0.1:8000/users/auth/reset_password/',{
+            new_password: new_password
+            
+        },
+       {
+        params:{
+            reset_token:reset_token
+        },
+       }
+        );
+        return true
+    }catch(error){
+        console.log(error);
+    }
+}
+
 
 
