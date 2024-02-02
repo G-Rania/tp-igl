@@ -6,7 +6,6 @@ import SignoutDiv from "../Components/AdminPage/Signout";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import ModInfo from "../Components/AdminPage/Modinfo";
 import { getMods } from "../api/admin/mod_api";
-import { useEffect } from "react";
 
 import { signOut, getData } from "../api/admin/auth_api";
 import { useNavigate } from "react-router-dom";
