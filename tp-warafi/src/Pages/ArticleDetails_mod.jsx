@@ -9,6 +9,7 @@ import approved_icon from "../assets/Usersview/approved.svg";
 import nonapproved from "../assets/Usersview/nonapproved.svg";
 import trash from "../assets/Usersview/trash.svg";
 import pen from "../assets/Usersview/pen.svg";
+import save from "../assets/save-icon.svg";
 import { useLocation } from 'react-router-dom';
 import { approve, desapprove, updateArticle } from "../api/moderator/articles_api";
 import { set } from "date-fns";
@@ -258,7 +259,7 @@ if( article !== null){
                     </p>
                     
                     <div className="flex flex-row space-x-4 lg:space-x-10  justify-around items-center mt-12 ">
-                    <a href="vers pdf" className="w-8 md:w-10  flex flex-row">
+                    <a href={article.pdf_url} target="_blank" rel="noopener noreferrer" className="w-8 md:w-10  flex flex-row">
                        <img src={pdf} alt="lien vers pdf"></img>
                     </a>
                     <button onClick={handleApproval}>
@@ -266,7 +267,7 @@ if( article !== null){
                     </button>
                     {isEditing ?(
                                             <button onClick={handleSaveClick} >
-                                            <img src={nonapproved}  alt="edit" className="w-6 md:w-8 "></img>
+                                            <img src={save}  alt="edit" className="w-6 md:w-8 "></img>
                                        </button>
                     ):<button onClick={handleEditClick} >
                     <img src={pen}  alt="edit" className="w-6 md:w-8 "></img>
