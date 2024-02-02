@@ -25,7 +25,11 @@ export default function Login() {
     const handleForgotPassword = async () => {
       try{
         const response = await forgotPassword(username)
-        navigate('/users/auth/forgot_password')
+        if(response===true){
+          navigate('/users/auth/forgot_password')
+        }else{
+          setErrorMessage("Email doesn't exist")
+        }
       }catch(e){}
     }
 

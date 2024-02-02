@@ -2,7 +2,7 @@ import React ,{useState, useEffect}from "react";
 import Adminbarre from "../Components/AdminPage/Adminbarre";
 import cloud from "../assets/Usersview/cloud.svg"
 import SignoutDiv from "../Components/AdminPage/Signout";
-import { getData } from "../api/admin/auth_api";
+import {signOut, getData } from "../api/admin/auth_api";
 import { useNavigate } from "react-router-dom";
 import { Atom } from "react-loading-indicators";
 import { extract } from "../api/admin/extract_api";
@@ -19,7 +19,16 @@ const UploadFile = (props) => {
     }
     const handleSignout = ()=>{
       setIsSignoutOpen(true);
-    } 
+    }
+    
+    const onSignout = async (e) => {
+      try{
+          const signedOut =await signOut()
+          if (signedOut){
+              navigate('/admin/login')
+          }
+      }catch(e){}
+  }
 
     const [isUpload,setUpload]= useState(false); 
     const Upload = async()=>{
@@ -52,6 +61,7 @@ const UploadFile = (props) => {
   }, []); 
     return(
         <div className="flex flex-row justify-start">
+            
              <Adminbarre onSignout={handleSignout} which={0} />
 
 
@@ -80,7 +90,9 @@ const UploadFile = (props) => {
             {isExtract &&
              <div className="mt-5">
           <Atom text="Loading..." color="orange" />
+          
         </div>}
+        <SignoutDiv isOpen={isOpen} onClose={onClose} signOut={onSignout}></SignoutDiv>
             </div>
 
             {/*<SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>*/}

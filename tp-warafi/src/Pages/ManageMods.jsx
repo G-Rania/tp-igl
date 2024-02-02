@@ -54,7 +54,7 @@ const ManageMods = (props) => {
 
     const onSignout = async (e) => {
       try{
-          const signedOut = signOut()
+          const signedOut =await signOut()
           if (signedOut){
               navigate('/admin/login')
           }
@@ -153,7 +153,7 @@ const ManageMods = (props) => {
               </div>
             </div>
          <EditModDiv isOpen={editIsOpen} onClose={closeEditDiv} ancienMod={modSelectionné} updateTable={updateModinTable} ></EditModDiv>
-         <SignoutDiv isOpen={isOpen} onClose={onClose} ></SignoutDiv>
+         <SignoutDiv isOpen={isOpen} onClose={onClose} signOut={onSignout}></SignoutDiv>
          <RemoveModDiv isOpen={removeIsOpen} onClose={closeRemovetDiv} id={modSelectionné.id} updateTable={removeModFromTable} ></RemoveModDiv>
          <AddModDiv isOpen={addIsOpen} onClose={closeAddtDiv} updateTable={addModToTable}></AddModDiv>
 

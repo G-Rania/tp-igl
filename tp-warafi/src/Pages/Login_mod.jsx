@@ -103,9 +103,6 @@ export default function Login_mod() {
             <button onClick={handleSubmit} className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
               LOGIN
             </button>
-            <a href="idk yet " className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">
-              Forgot Password?
-            </a>
           </div>
         </div>
       </div>
