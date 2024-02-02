@@ -35,6 +35,8 @@ export default function Login() {
           const response = await handleLogin(username, password);
           if (response == true){
             navigate('/users/home')
+          }else if(response === 'not verified'){
+            navigate('/users/auth/verify_email')
           }else{
             setErrorMessage(response)
           }// After successful login, perform necessary actions

@@ -34,6 +34,7 @@ const Article = ({article}) => {
 
 
     return(
+        
         <div className="bg-[#E9E9E9] rounded-3xl mx-10 mt-16 h-72 shadow-xl flex flex-row">
             <div className="bg-none"> 
             <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 mt-3">{article.title}</h1>
