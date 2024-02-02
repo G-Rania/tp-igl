@@ -20,8 +20,9 @@ export default function Signup(){
         e.preventDefault();
         try {
           const response = await handleSignup(userEmail, username, userPassword);
-          if (response == true){
-            navigate('/users/home')
+          console.log(response);
+          if (response === true){
+            navigate('/users/auth/verify_email')
           }else{
             setErrorMessage(response)
           }// After successful login, perform necessary actions
