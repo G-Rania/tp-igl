@@ -51,7 +51,7 @@ const Article = ({article}) => {
                 <button onClick={showDetails} className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
                     <img src={showdetails} alt="display details"></img>
                 </button>
-                <a href="vers pdf" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">
+                <a href={article.pdf_url} target="_blank" rel="noopener noreferrer" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">
                     <img src={pdf} alt="lien vers pdf"></img>
                 </a>
                 <img src={approved? approvedarticle : nonapprovedarticle} alt="state article" onClick={handleApproval} className="w-6 ml-16 lg:w-8 lg:m-4"></img>

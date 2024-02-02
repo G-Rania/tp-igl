@@ -52,7 +52,7 @@ export default function Home(){
 
     const navigate = useNavigate();
     const goToLandingPage = () => {
-        navigate('/users/home/'); // Navigating to the specified route '/'
+        navigate('/users/home'); // Navigating to the specified route '/'
       };
 
     const goToFavoritesPage = () => {

@@ -58,7 +58,7 @@ const ArticleDetails_user = () =>{
 
    const navigate = useNavigate();
    const goToLandingPage = () => {
-       navigate('/'); // Navigating to the specified route '/'
+       navigate('/users/home'); // Navigating to the specified route '/'
      };
 
    const goToFavoritesPage = () => {
@@ -122,7 +122,7 @@ if (article != null){
                     <span className="font2 ml-4">{article.publication_date}</span>
                     </p>
                     <div className="flex flex-row space-x-16 lg:space-x-28  justify-around items-center mt-12 ">
-                    <a href="vers pdf" className="w-6 md:w-8  flex flex-row">
+                    <a href={article.url} target="_blank" rel="noopener noreferrer" className="w-6 md:w-8  flex flex-row">
                        <img src={pdf} alt="lien vers pdf"></img>
                     </a>
                     <button onClick={handleFavorite}>
