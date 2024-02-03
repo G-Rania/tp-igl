@@ -9,7 +9,7 @@ import lockVector from "../assets/lockVector.svg";
 import eyeClosed from "../assets/eyeClosed.svg";
 import eyeOpened from "../assets/eyeOpened.svg";
 import { Link } from "react-router-dom";
-import {handleLogin, getData} from "../api/users/auth_api";
+import {handleLogin, getData, forgotPassword} from "../api/users/auth_api";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -22,12 +22,25 @@ export default function Login() {
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
    
+    const handleForgotPassword = async () => {
+      try{
+        const response = await forgotPassword(username)
+        if(response===true){
+          navigate('/users/auth/forgot_password')
+        }else{
+          setErrorMessage("Email doesn't exist")
+        }
+      }catch(e){}
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
           const response = await handleLogin(username, password);
           if (response == true){
             navigate('/users/home')
+          }else if(response === 'not verified'){
+            navigate('/users/auth/verify_email')
           }else{
             setErrorMessage(response)
           }// After successful login, perform necessary actions
@@ -88,11 +101,11 @@ export default function Login() {
           <div className="inputUserName h-[40%] w-full flex flex-col items-center justify-center">
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={userVector} alt="User Vector" className="h-[20px] w-[20px] mr-[10px]" />
-              <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username or Email" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <input id="username" onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username or Email" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
             </div>
             <div className="flex items-center h-[30%] w-[80%] border-b-2 border-orange-500">
               <img src={lockVector} alt="Lock Vector" className="h-[20px] w-[20px] mr-[10px]" />
-              <input onChange={(e) => setPassword(e.target.value)} type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
+              <input id="password" onChange={(e) => setPassword(e.target.value)} type= { passwordVisible? "text" : "password"} placeholder="Enter Password" className="w-[90%] h-full focus:outline-none font-bold text-[#771079]" />
               <img src={ passwordVisible ? eyeOpened : eyeClosed} alt="" className="h-[20px] w-[20px] ml-[10px] cursor-pointer" onClick={handlePasswordVisibility} />
             </div>
             {errorMessage && (
@@ -101,19 +114,19 @@ export default function Login() {
                     </div>
                 )}
             <div className="hidden custom-sm:flex items-center justify-end h-[20%] w-full">
-              <a href="idk yet" className="text-[#F87F0F] font-mada font-bold text-[12px]">
+              <button onClick={handleForgotPassword} className="text-[#F87F0F] font-mada font-bold text-[12px]">
                 Forgot Password ?
-              </a>
+              </button>
             </div>
           </div>
 
           <div className="thirdDiv h-[30%] w-[65%] mb-[20px] flex custom-sm:flex-col items-center justify-around">
-            <button onClick={handleSubmit} className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
+            <button id="loginButton" onClick={handleSubmit} className="loginButton pr-[40px] pl-[40px] p-[18px] rounded-full bg-[#F87F0F] text-white font-gilroy font-bold text-2xl">
               LOGIN
             </button>
-            <a href="idk yet " className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">
+            <button onClick={handleForgotPassword}   className="text-[#F87F0F] font-mada font-bold text-base custom-sm:hidden">
               Forgot Password?
-            </a>
+            </button>
             <div className="h-[10%] w-full hidden custom-sm:flex">
               <img src={or} alt="Or" className="h-full w-full" />
             </div>

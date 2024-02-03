@@ -5,6 +5,7 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-navigation/native": "^4.0.0-alpha.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +13,9 @@
     "react": "^18.2.0",
     "react-date-range": "^2.0.0-alpha.4",
     "react-dom": "^18.2.0",
+    "react-loading-indicator": "^1.0.2",
+    "react-loading-indicators": "^0.2.3",
+    "react-otp-input": "^3.1.1",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "rsuite": "^5.49.0",

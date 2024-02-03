@@ -32,8 +32,12 @@ export async function search (params){
                 "authors":currentItem["authors"],
                 "keywords":currentItem["keywords"],
                 "publication_date":currentItem["publication_date"],
-                "url":currentItem["url"],
-                "favorite":currentItem["favorite"]
+                "url":currentItem["pdf_url"],
+                "favorite":currentItem["favorite"],
+                "full_text":currentItem["full_text"],
+                "references": currentItem['references'],
+                "institutions":currentItem['institutions'],
+                "abstract": currentItem['abstract']
             }
             
             articles.push(articleInstance)

@@ -5,11 +5,17 @@ import notfav from "../../assets/Usersview/notfav.svg";
 import details from "../../assets/Usersview/showdetails.svg"
 import {addFavorite, removeFavorite} from "../../api/users/favorites_api"
 import { set } from "date-fns";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Article = ({article}) => {
-
+    const navigate = useNavigate();
+    const showDetails =() =>{
+        navigate(`/users/article/${article.id}`,
+            {state:  article } // Pass the article as part of the location state
+          );
+        };
 
     
     const [favorite, setFavorite] = useState(article.favorite)
@@ -28,6 +34,7 @@ const Article = ({article}) => {
 
 
     return(
+        
         <div className="bg-[#E9E9E9] rounded-3xl mx-10 mt-16 h-72 shadow-xl flex flex-row">
             <div className="bg-none"> 
             <h1 className="text-[#771079] font1 text-sm sm:text-lg md:text-2xl ml-7 mt-3">{article.title}</h1>
@@ -44,10 +51,10 @@ const Article = ({article}) => {
             </p>
             </div>
              <div className="flex justify-start flex-col h-28 lg:flex-row lg:justify-around w-64 sm:w-120 ml-auto mt-5 sm:mt-auto sm:mr-14 md:mr-24 md:mb-7 lg:mb-0 ">
-                <button className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
+                <button onClick={showDetails} className="ml-16 w-5 mb-5 lg:w-8 lg:m-4">
                     <img src={details} alt="display details"></img>
                 </button>
-                <a href="vers pdf" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">
+                <a href={article.url} target="_blank" rel="noopener noreferrer" className="w-6 ml-14 translate-x-1 mb-5 lg:w-8 lg:m-4 lg:mt-10">
                     <img src={pdf} alt="lien vers pdf"></img>
                 </a>
                 <button>
