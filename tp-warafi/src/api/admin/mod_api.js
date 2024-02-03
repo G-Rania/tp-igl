@@ -7,15 +7,14 @@ export async function addMod ( data ){
         const admin_id= localStorage.getItem('admin_id')
         const access_token = localStorage.getItem('admin_access_token');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/add_mod/',{
-            admin_id:"1",
+            admin_id:admin_id,
             username : data.username , 
             password: data.password , 
             email : data.email
         },
         {
             headers:{
-                //'Authorization': 'Bearer '+ access_token
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
+                'Authorization': 'Bearer '+access_token
             }
         }
         );
@@ -44,12 +43,12 @@ export async function removeModerator (modId){
         const access_token = localStorage.getItem('admin_access_token');
         const admin_id = localStorage.getItem('admin_id');
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/remove_mod/',{
-           admin_id:"1",
+           admin_id:admin_id,
            mod_id:modId
         },
         {
             headers:{
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
+                'Authorization': 'Bearer '+access_token
 
             }
         }
@@ -75,16 +74,16 @@ export async function removeModerator (modId){
 
 export async function getMods(){
     try {
-        const token = localStorage.getItem("access_token");
+        const token = localStorage.getItem("admin_access_token");
         const admin_id = localStorage.getItem("admin_id");
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/get_mods/',
         {
-            admin_id : "1"
+            admin_id : admin_id
         },
        
         { headers:
             {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
+                'Authorization': 'Bearer '+token
             }  }
         )
         //console.log(response.data['mods'])
@@ -109,11 +108,12 @@ export async function getMods(){
 
 export async function updateMod(props){
     try {
-        const token = localStorage.getItem("access_token");
+        const token = localStorage.getItem("admin_access_token");
         const admin_id = localStorage.getItem("admin_id");
+        console.log(props.id);
         const response = await axios.post('http://127.0.0.1:8000/admin/mods/update_mod/',
         {
-            admin_id : "1",
+            admin_id : admin_id,
             mod_id:props.id,
             username : props.username , 
             password: props.password , 
@@ -122,7 +122,7 @@ export async function updateMod(props){
        
         { headers:
             {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1Njc0MzgwLCJpYXQiOjE3MDQzNzgzODAsImp0aSI6IjU1MGViOWNhMGRjMzQwNTFhMzc5MTg1NGU0Yjc5ZDZmIiwidXNlcl9pZCI6MX0.2hANNXAnATc0EnGxzXfovooLXW_iNTDU-SnzWuOw3Ec '
+                'Authorization': 'Bearer '+token
             }  }
         )
         //console.log(response)
