@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+ 
+  frontend:
+    build:
+      context: ./tp-igl/tp-warafi #adjust this to the path of the tp-warafi (the one that contains the dockerfile of the front) 
+      dockerfile: Dockerfile
+    volumes:
+      - ./tp-igl/tp-warafi:/tp-igl/tp-warafi  
+    ports:
+      - "3000:3000"
+  # Add other services (e.g., databases, Elasticsearch) if needed
+
