@@ -17,3 +17,5 @@ kor
 six
 django-cors-headers
 django-environ
+tiktoken
+faiss-cpu

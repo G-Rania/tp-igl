@@ -20,7 +20,7 @@ services:
       MYSQL_HOST: 'db'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_ROOT_PASSWORD: ''
-      MYSQL_DATABASE: 'dataliink'
+      MYSQL_DATABASE: 'datalink'
       MYSQL_PASSWORD: ''
     ports:
       - "3306:3306"
@@ -29,6 +29,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+    networks:
+      - nt
  
 
   elasticsearch:
@@ -39,6 +41,8 @@ services:
     ports:
       - "9200:9200"
     restart: always
+    networks:
+      - nt
 
   backend:
     build:
@@ -56,7 +60,11 @@ services:
     depends_on:
       - db
       - elasticsearch
+    networks:
+      - nt
    
 
 volumes:
   data:
+networks:
+  nt:

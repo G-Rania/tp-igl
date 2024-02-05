@@ -61,13 +61,12 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-ELASTICSEARCH_DSL ={
-        'default':{
-            'hosts':{'http://localhost:9200'},
-            'timeout': 30, 
-        }
-
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'elasticsearch_container:9200',
+    },
 }
+
 
 
 ROOT_URLCONF = "warafi.urls"
@@ -101,7 +100,7 @@ WSGI_APPLICATION = "warafi.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dataliink',
+        'NAME': 'datalink',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'db',
