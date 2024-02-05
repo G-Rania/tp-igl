@@ -1,3 +1,9 @@
+## API Documentation:
+https://documenter.getpostman.com/view/29417619/2s9Yyti2HW
+
+## NOTE:
+To run the project, you need to install Poppler (Windows: from this link: https://github.com/oschwartz10612/poppler-windows/releases/tag/v23.11.0-0) and place it in the root directory of your project.
+
 ## Welcome to Datalink
 
 Datalink is a dynamic platform where readers of diverse nationalities and circumstances can connect to explore an array of compelling articles without any constraints.
